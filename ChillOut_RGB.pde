@@ -64,14 +64,16 @@ int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai supe
 
 //@}
 
-//store status of dev
-//0 = off 
-//1 = static color
-//2 = rand_col function
-//3 = flash function
+
 
 //!  Numero massimo di stati in cui si puo' trovare il sistema.
-#define MAX_STATUS 3 //!< Da tenere presente che sebbene lo stato 0 indichi il LED spento, anche lo 0 e' uno stato a tutti gli effetti 
+/*!      Da tenere presente che sebbene lo stato 0 indichi il LED spento, anche lo 0 e' uno stato a tutti gli effetti
+      - 0 = off 
+      - 1 = static color
+      - 2 = rand_col function
+      - 3 = flash function
+      */
+#define MAX_STATUS 3 
 //! Attesa fra un comando e l'altro ricevuto via IR.
 #define BTNDELAY 500 //!< Numero di millisecondi da aspettare dopo la pressione di un tasto prima di prendere un nuovo comando via IR
 int system_stat = 0; //!< Codice stato attuale in cui si trova il sistema
