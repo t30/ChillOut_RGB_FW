@@ -7,6 +7,7 @@
 //  12  13  14  15    ##  XXX    XXX    XXX    str
 //  16  17  18  19    ##  XXX    XXX    XXX    fad
 //  20  21  22  23    ##  XXX    XXX    XXX    smt
+//
 unsigned int myBtn[24][6] = {
   {0x90, 0x6f, 0x00, 0x00, 0x00, 0x00},
   {0xb8, 0x47, 0x01, 0x00, 0x00, 0x01},
