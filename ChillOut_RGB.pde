@@ -20,14 +20,14 @@
  // @param MCU pin
  */
 //@{
-int gnd_pin = 15; 	//!< Pin di massa - OUTPUT
-int vcc_pin = 16; 	//!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
-int RECV_PIN = 14; 	//!< Pin di ricezione dati - INPUT
+#define GND_PIN 15        //!< Pin di massa - OUTPUT
+#define VCC_PIN 16        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
+#define RECV_PIN 14       //!< Pin di ricezione dati - INPUT
 //@}
 
 //pinout IR test
-//int gnd_pin = 6;	
-//int vcc_pin = 7;	
+//int GND_PIN = 6;	
+//int VCC_PIN = 7;	
 //int RECV_PIN = 5;
 
 /*! @name OUTPUT RGB PinOut
@@ -35,9 +35,9 @@ int RECV_PIN = 14; 	//!< Pin di ricezione dati - INPUT
  // @param MCU pin
  */
 //@{
-int red_pin = 10; 	//!< Pin dell'MCU al quale e' connesso l'anodo Rosso (R) - OUTPUT 
-int green_pin = 9; 	//!< Pin dell'MCU al quale e' connesso l'anodo Verde (G) - OUTPUT
-int blue_pin = 5; 	//!< Pin dell'MCU al quale e' connesso l'anodo Blu (B)   - OUTPUT
+#define RED_PIN 10 	//!< Pin dell'MCU al quale e' connesso l'anodo Rosso (R) - OUTPUT 
+#define GREEN_PIN 9 	//!< Pin dell'MCU al quale e' connesso l'anodo Verde (G) - OUTPUT
+#define BLUE_PIN 5 	//!< Pin dell'MCU al quale e' connesso l'anodo Blu (B)   - OUTPUT
 //@}
 
 //! Array da 3 colonne in cui viene appoggiato il comando proveniente dalla seriale
@@ -106,9 +106,9 @@ unsigned long decode(unsigned long value){
               Serial.println("ON");
             } 
             else {
-              analogWrite(red_pin,0);
-              analogWrite(green_pin,0);
-              analogWrite(blue_pin,0);
+              analogWrite(RED_PIN,0);
+              analogWrite(GREEN_PIN,0);
+              analogWrite(BLUE_PIN,0);
               system_stat = 0;
               Serial.println("OFF");
             } 
@@ -186,17 +186,17 @@ void rgb() {
    */
   /*!
    - Scrittura fisica dei valori di PWM da applicare ai pin
-   \arg Scrittura red_pin 
+   \arg Scrittura RED_PIN 
    */
-  analogWrite(red_pin,r);
+  analogWrite(RED_PIN,r);
   /*!
-   \arg Scrittura green_pin 
+   \arg Scrittura GREEN_PIN 
    */
-  analogWrite(green_pin,g);
+  analogWrite(GREEN_PIN,g);
   /*!
-   \arg Scrittura blue_pin 
+   \arg Scrittura BLUE_PIN 
    */
-  analogWrite(blue_pin,b);
+  analogWrite(BLUE_PIN,b);
 }
 
 /*!
@@ -342,27 +342,27 @@ void setup()
    */
   /*!
    - Settaggio dei pin di OUTPUT
-   \arg Settaggio red_pin 
+   \arg Settaggio RED_PIN 
    */
-  pinMode(red_pin, OUTPUT);		
-  /*! \arg Settaggio green_pin */
-  pinMode(green_pin, OUTPUT);		
-  /*! \arg Settaggio blue_pin */
-  pinMode(blue_pin, OUTPUT);		
-  /*! \arg Settaggio gnd_pin */
-  pinMode(gnd_pin, OUTPUT);		
-  /*! \arg Settaggio vcc_pin */
-  pinMode(vcc_pin, OUTPUT);		
+  pinMode(RED_PIN, OUTPUT);		
+  /*! \arg Settaggio GREEN_PIN */
+  pinMode(GREEN_PIN, OUTPUT);		
+  /*! \arg Settaggio BLUE_PIN */
+  pinMode(BLUE_PIN, OUTPUT);		
+  /*! \arg Settaggio GND_PIN */
+  pinMode(GND_PIN, OUTPUT);		
+  /*! \arg Settaggio VCC_PIN */
+  pinMode(VCC_PIN, OUTPUT);		
   /*! \arg Settaggio LEDPP */
   pinMode(LEDPP, OUTPUT);		
   //!\n
   /*!
    - Settaggio dello stato dei PIN di alimentazione del ricevitore IR
-   \arg Settaggio stato LOW al gnd_pin
+   \arg Settaggio stato LOW al GND_PIN
    */
-  digitalWrite(gnd_pin, LOW);		
+  digitalWrite(GND_PIN, LOW);		
   /*!   \arg Settaggio stato HIGH al pin vcc_gnd */
-  digitalWrite(vcc_pin, HIGH);  	
+  digitalWrite(VCC_PIN, HIGH);  	
   //!\n
   /*!
    - Start-up porta seriale e ricevitore IR
