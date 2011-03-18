@@ -1,7 +1,7 @@
 /*! @file ChillOut-RGB.pde
  @author Ing. M.Lampugnani
  @par Company:
- Atos S.p.a.
+ MyCompany
  @version 0.0.2
  @date 10th march 2011
  */
