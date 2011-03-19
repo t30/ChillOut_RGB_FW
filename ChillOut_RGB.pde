@@ -384,7 +384,6 @@ void setup()
 void loop()
 {
   if (irrecv.decode(&results)) {
-
     //Serial.println(results.value, HEX);
     int result = decode(results.value);
     //    if (result != -1 && result != 11 && result != 15 && result != 19 && result != 23){
