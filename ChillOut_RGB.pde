@@ -1,4 +1,4 @@
-/*! @file ChillOut-RGB.pde
+/*! @file ChillOut_RGB.pde
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
@@ -8,7 +8,8 @@
 
 #include <IRremote.h> 
 //#include <avr/pgmspace.h>
-#include "ir_RM8S.h"
+//#include "ir_RM8S.h"
+#include "ir_rgb.h"
 #include <util/delay.h>
 //! Pin di segnalazione POWER On/Off.
 #define LEDPP 13 //!< Sul Pin 13 e' gia' connesso sul Circuito Stampato un LED - OUTPUT
@@ -55,9 +56,8 @@ int incomingByte = 0;
  // @param [0-255]
  */
 //@{
-int max_pwm=255;
-/*!< Valore massimo assumibile dai colori (1-255); con 0 non si accenderebbe proprio il led.\n Da tenere presente che anche con valor
-bassi il led potrebbe non dare segno di vita */
+/*!  Da tenere presente che anche con valori bassi il led potrebbe non dare segno di vita*/
+int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-255); con 0 non si accenderebbe proprio il led
 int r=100; //!< Variabile colore Rosso	(Red) - Questa variabile non puo' mai superare il valore di "max_pwm"
 int g=100; //!< Variabile colore Verde	(Green) - Questa variabile non puo' mai superare il valore di "max_pwm"
 int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai superare il valore di "max_pwm"
@@ -88,15 +88,22 @@ decode_results results;
 unsigned long decode(unsigned long value){
   unsigned int b0 = (value&0xff00)>>8;
   unsigned int b1 = (value&0x00ff);
-  //  Serial.print("Value b0= ");
-  //  Serial.println(b0, HEX);
-  //  Serial.print("Value b1= ");
-  //  Serial.println(b1, HEX);
+//  Serial.println(value, HEX);
+//  Serial.print("Value b0= ");
+//  Serial.println(b0, HEX);
+//  Serial.print("Value b1= ");
+//  Serial.println(b1, HEX);
   unsigned int ret = -1;
   for (int i=0; i < 7; i++) {
-    if(b1 == myBtn[i][0]){
-      if (myBtn[i][1] <= 7 && myBtn[i][1] > 0) {
-        switch(myBtn[i][1]){
+//    Serial.print("Inside For cycle:");
+//    Serial.println(i);
+//    if(b1 == myBtn[i][0]){
+      if(b0 == myBtn[i][0]){
+//      Serial.println("b0 == myBtn[i][0]");
+      if (myBtn[i][5] <= 7 && myBtn[i][5] > 0) {
+//        Serial.println("myBtn[i][5] <= 7 && myBtn[i][5] > 0");
+        ret = myBtn[i][5];
+        switch(myBtn[i][5]){
 
         case 1://!	@arg FUNCTION power button
           {
@@ -166,11 +173,11 @@ unsigned long decode(unsigned long value){
           }
         }
       }
-      ret = myBtn[i][1];
       continue;
-      //ret = i;
+//      ret = i;
     }
   }
+//  Serial.println(ret);
   return ret;
   //return value;
 }
