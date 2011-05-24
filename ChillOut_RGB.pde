@@ -334,10 +334,40 @@ void setup()
   irrecv.enableIRIn(); 			
   /*!	\arg Accensione del LED di stato LEDPP*/
   digitalWrite(LEDPP,HIGH);		
-  r=0;g=0;b=0;rgb();
-  r=255;g=0;b=0;rgb();delay(200);r=0;g=0;b=0;rgb();delay(200);
-  r=0;g=255;b=0;rgb();delay(200);r=0;g=0;b=0;rgb();delay(200);
-  r=0;g=0;b=255;rgb();delay(200);r=0;g=0;b=0;rgb();delay(200);
+  r=0;
+  g=0;
+  b=0;
+  rgb();
+  r=255;
+  g=0;
+  b=0;
+  rgb();
+  delay(200);
+  r=0;
+  g=0;
+  b=0;
+  rgb();
+  delay(200);
+  r=0;
+  g=255;
+  b=0;
+  rgb();
+  delay(200);
+  r=0;
+  g=0;
+  b=0;
+  rgb();
+  delay(200);
+  r=0;
+  g=0;
+  b=255;
+  rgb();
+  delay(200);
+  r=0;
+  g=0;
+  b=0;
+  rgb();
+  delay(200);
   rgb();
   //delay(3000);
   //Serial.begin(9600);
@@ -367,7 +397,7 @@ void loop()
   }
 
   if (Serial.available() > 0) {
-    system_stat = 1;
+    //system_stat = 1;
     incomingByte = Serial.read();
     for (int i=0; i < 3; i++){
       cmd[i] = cmd[i+1];
@@ -376,7 +406,6 @@ void loop()
     cmd[2] = incomingByte;
     //Serial.println(cmd);
     if(cmd[0] == 's' && cmd[1] == 'e' && cmd[2] == 't'){
-      system_stat = 0;
       Serial.println("setting");
       if (Serial.available() > 0) {
         for(int i=0; i<2;i++){
@@ -388,12 +417,14 @@ void loop()
         g=255;
         b=255;
         rgb();
+        system_stat = 1;
       }
       if(arg[1] == '0') {
         r=0;
         g=0;
         b=0;
         rgb();
+        system_stat = 0;
       }
     }
     if(cmd[0] == 'p' && cmd[1] == 'r' && cmd[2] == 'g'){
@@ -411,7 +442,7 @@ void loop()
       }
     }
     if(cmd[0] == 't' && cmd[1] == 'r' && cmd[2] == 'i'){
-      system_stat = 0;
+      system_stat = 1;
       Serial.println("tricolor");
       if (Serial.available() > 0) {
         for(int i=0; i<2;i++){
@@ -444,7 +475,7 @@ void loop()
       }
     }
     if(cmd[0] == 'r' && cmd[1] == 'g' && cmd[2] == 'b'){
-      system_stat = 0;
+      system_stat = 1;
       Serial.println("rgb-16M");
       if (Serial.available() > 0) {
         for(int i=0; i<7;i++){
@@ -509,6 +540,7 @@ void loop()
     }
   }
 }
+
 
 
 
