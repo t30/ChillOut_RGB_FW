@@ -53,7 +53,7 @@ int incomingByte = 0;
  @param [0-255]  */
 //@{
 /*!  Da tenere presente che anche con valori bassi il led potrebbe non dare segno di vita*/
-int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-255); con 0 non si accenderebbe proprio il led
+unsigned int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-255); con 0 non si accenderebbe proprio il led
 int r=100; //!< Variabile colore Rosso	(Red) - Questa variabile non puo' mai superare il valore di "max_pwm"
 int g=100; //!< Variabile colore Verde	(Green) - Questa variabile non puo' mai superare il valore di "max_pwm"
 int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai superare il valore di "max_pwm"
@@ -427,6 +427,7 @@ void loop()
         system_stat = 0;
       }
     }
+
     if(cmd[0] == 'p' && cmd[1] == 'r' && cmd[2] == 'g'){
       Serial.println("program");
       if (Serial.available() > 0) {
@@ -441,6 +442,34 @@ void loop()
         system_stat = 3;
       }
     }
+
+    if(cmd[0] == 'p' && cmd[1] == 'w' && cmd[2] == 'm'){
+      Serial.print("MaxPWMSetting");
+      if (Serial.available() > 0) {
+        for(int i=0; i<3;i++){
+          arg[i]=Serial.read();
+        }
+      }
+
+      //pwm_max setting by serial command
+      if(arg[1]>=48 && arg[1]<=57){
+        max_pwm = int(arg[1])-48;
+        max_pwm = max_pwm << 4;
+      }
+      else if(arg[1]>=65 && arg[1]<=70){
+        max_pwm = int(arg[1])-55;
+        max_pwm = max_pwm << 4;
+      }
+      if(arg[2]>=48 && arg[2]<=57){
+        max_pwm = max_pwm + int(arg[2])-48;
+      }
+      else if(arg[2]>=65 && arg[2]<=70){
+        max_pwm = max_pwm + int(arg[2])-55;
+      }
+
+      Serial.println(max_pwm);
+    }
+
     if(cmd[0] == 't' && cmd[1] == 'r' && cmd[2] == 'i'){
       system_stat = 1;
       Serial.println("tricolor");
@@ -540,6 +569,9 @@ void loop()
     }
   }
 }
+
+
+
 
 
 
