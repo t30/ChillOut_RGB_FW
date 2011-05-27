@@ -121,7 +121,7 @@ unsigned long decode(unsigned long value){
               system_stat++;
             } 
             else {
-              system_stat = 1;
+              system_stat = 0;
             }
             Serial.print("newstatus: ");
             Serial.println(system_stat);
