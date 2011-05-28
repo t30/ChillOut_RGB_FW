@@ -73,6 +73,7 @@ int system_stat = 0; //!< Codice stato attuale in cui si trova il sistema
 //! Creo un'istanza per la classe IRrecv
 IRrecv irrecv(RECV_PIN); //!< Alla quale devo passare come argomento il pin sul quale arriveranno i dati dal ricevitore (RECV_PIN).
 
+//! Variabile di appoggio per i dati decodificati provenienti dall'IR
 decode_results results;
 
 /*! Funzione impiegata nella decodifica dei dati provenienti dal ricevitore IR
