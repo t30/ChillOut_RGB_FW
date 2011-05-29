@@ -50,9 +50,9 @@ int incomingByte = 0;
 //@{
 /*!  Da tenere presente che anche con valori bassi il led potrebbe non dare segno di vita*/
 unsigned int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-255); con 0 non si accenderebbe proprio il led
-int r=100; //!< Variabile colore Rosso	(Red) - Questa variabile non puo' mai superare il valore di "max_pwm"
-int g=100; //!< Variabile colore Verde	(Green) - Questa variabile non puo' mai superare il valore di "max_pwm"
-int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai superare il valore di "max_pwm"
+int r=100; //!< Variabile colore Rosso	(Red) - Questa variabile non puo' mai superare il valore di var::max_pwm
+int g=100; //!< Variabile colore Verde	(Green) - Questa variabile non puo' mai superare il valore di var::max_pwm
+int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai superare il valore di var::max_pwm
 //@}
 
 //!  Numero massimo di stati in cui si puo' trovare il sistema.
@@ -69,7 +69,7 @@ int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai supe
 int system_stat = 0; //!< La variabile dovra' assumere solo valori predefiniti dalle define STATUS_X
 
 //! Creo un'istanza per la classe IRrecv
-IRrecv irrecv(RECV_PIN); //!< Alla quale devo passare come argomento il pin sul quale arriveranno i dati dal ricevitore (RECV_PIN).
+IRrecv irrecv(RECV_PIN); //!< Alla quale devo passare come argomento il pin sul quale arriveranno i dati dal ricevitore (var::RECV_PIN).
 //! Variabile di appoggio per i dati decodificati provenienti dall'IR
 decode_results results;
 
@@ -279,13 +279,13 @@ void rand_col() {
   // delay(3000); // some time before next change
 }
 
+//!  Flash colori RANDOM
 /*! Fa Lampeggiare il LED in modo Random\n
  Prendendo i parametri che gli vengono passati come base per generare i sui impulsi
- @param[in] ledmax		Massima Luminosita' del led [var::max_pwm]
+ @param[in] ledmax		Massima Luminosita' del led var::max_pwm
  @param[in] pulselensec 	Durata degli impulsi
  @param[in] freqmin 		Frequenza minima 
  @param[in] freqmax		Frequnza massima  */
-//!  Flash colori RANDOM
 void bedazzle(int ledmax, int pulselensec, int freqmin, int freqmax) {
   long pulses;
   /*!  <b> Operazioni eseguite dalla funzione: </b>  */
@@ -344,25 +344,27 @@ void setup()
 {
   /*!  <b> Operazioni eseguite dalla funzione: </b>  */
   /*!  - Settaggio dei pin di OUTPUT  
-   \arg Settaggio RED_PIN  */
+   \arg Settaggio var::RED_PIN  */
   pinMode(RED_PIN, OUTPUT);		
-  /*! \arg Settaggio GREEN_PIN */
+  /*! \arg Settaggio var::GREEN_PIN */
   pinMode(GREEN_PIN, OUTPUT);		
-  /*! \arg Settaggio BLUE_PIN */
+  /*! \arg Settaggio var::BLUE_PIN */
   pinMode(BLUE_PIN, OUTPUT);		
-  /*! \arg Settaggio GND_PIN */
+  /*! \arg Settaggio var::GND_PIN */
   pinMode(GND_PIN, OUTPUT);		
-  /*! \arg Settaggio VCC_PIN */
+  /*! \arg Settaggio var::VCC_PIN */
   pinMode(VCC_PIN, OUTPUT);		
-  /*! \arg Settaggio LEDPP */
+  /*! \arg Settaggio var::LEDPP */
   pinMode(LEDPP, OUTPUT);		
   //!\n
+
   /*!- Settaggio dello stato dei PIN di alimentazione del ricevitore IR
-   \arg Settaggio stato LOW al GND_PIN  */
+   \arg Settaggio stato LOW al var::GND_PIN  */
   digitalWrite(GND_PIN, LOW);		
-  /*!   \arg Settaggio stato HIGH al pin vcc_gnd */
+  /*!   \arg Settaggio stato HIGH al pin var::VCC_PIN */
   digitalWrite(VCC_PIN, HIGH);  	
   //!\n
+
   /*!  - Start-up porta seriale e ricevitore IR
    	\arg Avvio della porta seriale  */
   Serial.begin(9600); 
@@ -370,12 +372,16 @@ void setup()
   Serial.println("enabling IR ");	
   /*!	\arg Avvio fisico della ricezione via IR*/
   irrecv.enableIRIn(); 			
-  /*!	\arg Accensione del LED di stato LEDPP*/
+  /*!	\arg Accensione del LED di stato var::LEDPP*/
   digitalWrite(LEDPP,HIGH);		
+  //!\n
 
+  /*!  - Final Test 
+   \arg Init Test Led RGB */
   LedInitTest();
+   /*!  \arg Invio sulla porta del messaggio "Ready!!" */
+  Serial.println("Ready!!");	
   //delay(3000);
-  //Serial.begin(9600);
 }
 
 //! Funzione Principale del dipositivo (main)
@@ -574,6 +580,8 @@ void loop()
     }
   }
 }
+
+
 
 
 
