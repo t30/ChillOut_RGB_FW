@@ -109,8 +109,6 @@ void LedInitTest() {
   g=0;
   b=0;
   rgb();
-  delay(200);
-  rgb();
 }
 
 /*! Funzione impiegata nella decodifica dei dati provenienti dal ricevitore IR
