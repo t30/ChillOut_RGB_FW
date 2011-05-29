@@ -24,10 +24,6 @@
 #define RECV_PIN 14       //!< Pin di ricezione dati - INPUT
 //@}
 
-//pinout IR test
-//int GND_PIN = 6;	
-//int VCC_PIN = 7;	
-//int RECV_PIN = 5;
 
 /*! @name OUTPUT RGB PinOut
  	Definizione delle Connessioni dei tre anodi del led RGB
@@ -65,16 +61,57 @@ int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai supe
  - 1 = static color
  - 2 = rand_col function
  - 3 = flash function  */
-#define MAX_STATUS 3 
+#define MAX_STATUS 3
+
 //! Attesa fra un comando e l'altro ricevuto via IR.
 #define BTNDELAY 500 //!< Numero di millisecondi da aspettare dopo la pressione di un tasto prima di prendere un nuovo comando via IR
-int system_stat = 0; //!< Codice stato attuale in cui si trova il sistema
+//! Codice stato attuale in cui si trova il sistema
+int system_stat = 0; //!< La variabile dovra' assumere solo valori predefiniti dalle define STATUS_X
 
 //! Creo un'istanza per la classe IRrecv
 IRrecv irrecv(RECV_PIN); //!< Alla quale devo passare come argomento il pin sul quale arriveranno i dati dal ricevitore (RECV_PIN).
-
 //! Variabile di appoggio per i dati decodificati provenienti dall'IR
 decode_results results;
+
+/*! Funzione che emette tre lampeggi da 200ms dei tre colori principali del led*/
+//! Funzione di test LED RGB
+void LedInitTest() {
+  r=0;
+  g=0;
+  b=0;
+  rgb();
+  r=255;
+  g=0;
+  b=0;
+  rgb();
+  delay(200);
+  r=0;
+  g=0;
+  b=0;
+  rgb();
+  delay(200);
+  r=0;
+  g=255;
+  b=0;
+  rgb();
+  delay(200);
+  r=0;
+  g=0;
+  b=0;
+  rgb();
+  delay(200);
+  r=0;
+  g=0;
+  b=255;
+  rgb();
+  delay(200);
+  r=0;
+  g=0;
+  b=0;
+  rgb();
+  delay(200);
+  rgb();
+}
 
 /*! Funzione impiegata nella decodifica dei dati provenienti dal ricevitore IR
  @param[in]  value  Dati provenienti dal Ricevitore IR */
@@ -335,41 +372,8 @@ void setup()
   irrecv.enableIRIn(); 			
   /*!	\arg Accensione del LED di stato LEDPP*/
   digitalWrite(LEDPP,HIGH);		
-  r=0;
-  g=0;
-  b=0;
-  rgb();
-  r=255;
-  g=0;
-  b=0;
-  rgb();
-  delay(200);
-  r=0;
-  g=0;
-  b=0;
-  rgb();
-  delay(200);
-  r=0;
-  g=255;
-  b=0;
-  rgb();
-  delay(200);
-  r=0;
-  g=0;
-  b=0;
-  rgb();
-  delay(200);
-  r=0;
-  g=0;
-  b=255;
-  rgb();
-  delay(200);
-  r=0;
-  g=0;
-  b=0;
-  rgb();
-  delay(200);
-  rgb();
+
+  LedInitTest();
   //delay(3000);
   //Serial.begin(9600);
 }
@@ -570,6 +574,7 @@ void loop()
     }
   }
 }
+
 
 
 
