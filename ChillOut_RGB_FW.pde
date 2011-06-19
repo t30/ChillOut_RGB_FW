@@ -29,44 +29,64 @@
  	Definizione delle Connessioni dei tre anodi del led RGB
  @param MCU pin  */
 //@{
+  
 #define RED_PIN 10 	//!< Pin dell'MCU al quale e' connesso l'anodo Rosso (R) - OUTPUT 
 #define GREEN_PIN 9 	//!< Pin dell'MCU al quale e' connesso l'anodo Verde (G) - OUTPUT
 #define BLUE_PIN 5 	//!< Pin dell'MCU al quale e' connesso l'anodo Blu (B)   - OUTPUT
+
 //@}
 
-//! Array da 3 colonne in cui viene appoggiato il comando proveniente dalla seriale
-char cmd[] = {
-  0, 0, 0};
-//! Array da 7 colonne in cui viene appoggiato l'argomento del comando proveniente dalla seriale
-char arg[]= {
-  0,0,0,0,0,0,0};
-//! Variabile di parcheggio per i dati provenienti dalla porta seriale
-int incomingByte = 0;
 
 /*! @name Colore Attuale RGB
  	Variabili in cui vengono salvati i valori da scrivere sull'uscita per generare un colore \n
  	Dopo aver cambiato il valore di queste variabili, viene chiamata la funzione rgb() per scriverli fisicamente
  @param [0-255]  */
 //@{
+  
 /*!  Da tenere presente che anche con valori bassi il led potrebbe non dare segno di vita*/
 unsigned int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-255); con 0 non si accenderebbe proprio il led
 int r=100; //!< Variabile colore Rosso	(Red) - Questa variabile non puo' mai superare il valore di var::max_pwm
 int g=100; //!< Variabile colore Verde	(Green) - Questa variabile non puo' mai superare il valore di var::max_pwm
 int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai superare il valore di var::max_pwm
+
 //@}
 
+
+/*!  @name Variaibli di appoggio
+ Varibili di appoggio utilizzate per la comunicazione seriale.  */
+//@{
+  
+//! Array da 3 colonne in cui viene appoggiato il comando proveniente dalla seriale
+char cmd[] = {
+  0, 0, 0};
+//! Array da 7 colonne in cui viene appoggiato l'argomento del comando proveniente dalla seriale
+char arg[]= {
+  0,0,0,0,0,0,0};
+//! Variabile di parcheggio per l'ultimo byte arrivato dalla porta seriale
+int incomingByte = 0;
+
+//@}
+
+
+/*!  @name  State 
+        Variabili e definizioni utilizzate per la gestione degli stati del sistema.  */
+//@{
+
 //!  Numero massimo di stati in cui si puo' trovare il sistema.
-/*!      Da tenere presente che sebbene lo stato 0 indichi il LED spento, anche lo 0 e' uno stato a tutti gli effetti
- - 0 = off 
- - 1 = static color
- - 2 = rand_col function
- - 3 = flash function  */
 #define MAX_STATUS 3
+/*!  Da tenere presente che sebbene lo stato 0 indichi il LED spento.
+        Anche lo 0 e' uno stato a tutti gli effetti  */
+#define STAT_OFF       0x00    //!<  0 = off                    @todo  Non ancora usata 
+#define STAT_STATIC    0x01    //!<  1 = static color           @todo  Non ancora usata 
+#define STAT_RAND      0x02    //!<  2 = rand_col function      @todo  Non ancora usata 
+#define STAT_FLASH     0x03    //!<  3 = flash function         @todo  Non ancora usata 
+//! Codice stato attuale in cui si trova il sistema
+int system_stat = 0; //!< La variabile dovra' assumere solo valori predefiniti dalle define STAT_*
+//@}
 
 //! Attesa fra un comando e l'altro ricevuto via IR.
 #define BTNDELAY 500 //!< Numero di millisecondi da aspettare dopo la pressione di un tasto prima di prendere un nuovo comando via IR
-//! Codice stato attuale in cui si trova il sistema
-int system_stat = 0; //!< La variabile dovra' assumere solo valori predefiniti dalle define STATUS_X
+
 
 //! Creo un'istanza per la classe IRrecv
 IRrecv irrecv(RECV_PIN); //!< Alla quale devo passare come argomento il pin sul quale arriveranno i dati dal ricevitore (var::RECV_PIN).
@@ -292,12 +312,6 @@ void bedazzle(int ledmax, int pulselensec, int freqmin, int freqmax) {
   g=0;
   b=0;
   rgb();
-  // analogWrite(redpin1, 0);
-  // analogWrite(redpin2, 0);
-  // analogWrite(greenpin1, 0);
-  // analogWrite(greenpin2, 0);
-  // analogWrite(bluepin1, 0);
-  // analogWrite(bluepin2, 0);
   //
   // note we dont use red LEDs in this
   /*!  - Setup - Calcola i parametri necessari al suo funzionamento:
@@ -377,7 +391,7 @@ void setup()
   /*!  - Final Test 
    \arg Init Test Led RGB */
   LedInitTest();
-   /*!  \arg Invio sulla porta del messaggio "Ready!!" */
+  /*!  \arg Invio sulla porta del messaggio "Ready!!" */
   Serial.println("Ready!!");	
   //delay(3000);
 }
@@ -578,6 +592,7 @@ void loop()
     }
   }
 }
+
 
 
 
