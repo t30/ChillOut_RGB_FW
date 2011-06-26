@@ -1,4 +1,4 @@
-/*! @file ChillOut_RGB.pde
+/*! @file ChillOut_RGB_FW.pde
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
@@ -29,7 +29,7 @@
  	Definizione delle Connessioni dei tre anodi del led RGB
  @param MCU pin  */
 //@{
-  
+
 #define RED_PIN 10 	//!< Pin dell'MCU al quale e' connesso l'anodo Rosso (R) - OUTPUT 
 #define GREEN_PIN 9 	//!< Pin dell'MCU al quale e' connesso l'anodo Verde (G) - OUTPUT
 #define BLUE_PIN 5 	//!< Pin dell'MCU al quale e' connesso l'anodo Blu (B)   - OUTPUT
@@ -42,7 +42,7 @@
  	Dopo aver cambiato il valore di queste variabili, viene chiamata la funzione rgb() per scriverli fisicamente
  @param [0-255]  */
 //@{
-  
+
 /*!  Da tenere presente che anche con valori bassi il led potrebbe non dare segno di vita*/
 unsigned int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-255); con 0 non si accenderebbe proprio il led
 int r=100; //!< Variabile colore Rosso	(Red) - Questa variabile non puo' mai superare il valore di var::max_pwm
@@ -55,7 +55,7 @@ int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai supe
 /*!  @name Variaibli di appoggio
  Varibili di appoggio utilizzate per la comunicazione seriale.  */
 //@{
-  
+
 //! Array da 3 colonne in cui viene appoggiato il comando proveniente dalla seriale
 char cmd[] = {
   0, 0, 0};
@@ -69,17 +69,19 @@ int incomingByte = 0;
 
 
 /*!  @name  State 
-        Variabili e definizioni utilizzate per la gestione degli stati del sistema.  */
+ Variabili e definizioni utilizzate per la gestione degli stati del sistema.  */
 //@{
 
 //!  Numero massimo di stati in cui si puo' trovare il sistema.
 #define MAX_STATUS 3
 /*!  Da tenere presente che sebbene lo stato 0 indichi il LED spento.
-        Anche lo 0 e' uno stato a tutti gli effetti  */
+ Anche lo 0 e' uno stato a tutti gli effetti  */
 #define STAT_OFF       0x00    //!<  0 = off                    @todo  Non ancora usata 
 #define STAT_STATIC    0x01    //!<  1 = static color           @todo  Non ancora usata 
-#define STAT_RAND      0x02    //!<  2 = rand_col function      @todo  Non ancora usata 
-#define STAT_FLASH     0x03    //!<  3 = flash function         @todo  Non ancora usata 
+#define STAT_RAND      0x02    //!<  2 = rand_col function      @todo  Usata in parte 
+#define STAT_FLASH     0x03    //!<  3 = flash function         @todo  Usata in parte
+#define STAT_UFO       0x04    //!<  4 = ufo function
+
 //! Codice stato attuale in cui si trova il sistema
 int system_stat = 0; //!< La variabile dovra' assumere solo valori predefiniti dalle define STAT_*
 //@}
@@ -297,6 +299,92 @@ void rand_col() {
   // delay(3000); // some time before next change
 }
 
+/*!  Effetto fading su singolo colore (R-G-B-W) */
+//! Passaggio graduale fra diverse tonalita' del colore attualmente piu' forte
+void ufo() {
+  randomSeed(analogRead(0));
+  // randomSeed((r+0)*(g+0)*(b+0));
+  int color,i,value,time=10; // how long does it take each step
+  //color=random(1,4); // which color to dim now
+  if(r>g && r>b)  color=1;
+  if(g>r && g>b)  color=2;
+  if(b>g && b>r)  color=3;
+  if(r==g && r==b)  color=0;
+  value=random(1,max_pwm); // new value of that color
+  switch(color) {
+  case 0:
+    if(r>value) for(i=r;i>value;i--) {
+      r = i;
+      g = i;
+      b = i;
+      rgb();
+      delay(time);
+    }
+    else for(i=r;i<value;i++) {
+      r = i;
+      g = i;
+      b = i;
+      rgb();
+      delay(time);
+    }
+    r=value;
+    g=value;
+    b=value;
+    rgb();
+    break;
+  case 1:
+    if(r>value) for(i=r;i>value;i--) {
+      r = i;
+      rgb();
+      delay(time);
+    }
+    else for(i=r;i<value;i++) {
+      r = i;
+      rgb();
+      delay(time);
+    }
+    r=value;
+    g = 0;
+    b = 0;
+    rgb();
+    break;
+  case 2:
+    if(g>value) for(i=g;i>value;i--) {
+      g = i;
+      rgb();
+      delay(time);
+    }
+    else for(i=g;i<value;i++) {
+      g = i;
+      rgb();
+      delay(time);
+    }
+    g=value;
+    r = 0;
+    b = 0;
+    rgb();
+    break;
+  case 3:
+    if(b>value) for(i=b;i>value;i--) {
+      b = i;
+      rgb();
+      delay(time);
+    }
+    else for(i=b;i<value;i++) {
+      b = i;
+      rgb();
+      delay(time);
+    }
+    b=value;
+    g = 0;
+    r = 0;
+    rgb();
+    break;
+  }
+  // delay(3000); // some time before next change
+}
+
+
 //!  Flash colori RANDOM
 /*! Fa Lampeggiare il LED in modo Random\n
  Prendendo i parametri che gli vengono passati come base per generare i sui impulsi
@@ -411,14 +499,17 @@ void loop()
     irrecv.resume(); // Receive the next value
     //    Serial.println("OK");
   }
-  if (system_stat == 2) {
+  if (system_stat == STAT_RAND) {
     rand_col();
   }
 
-  if (system_stat == 3) {
+  if (system_stat == STAT_FLASH) {
     bedazzle(max_pwm, 10, 7, 11);
   }
 
+  if (system_stat == STAT_UFO) {
+    ufo();
+  }
   if (Serial.available() > 0) {
     //system_stat = 1;
     incomingByte = Serial.read();
@@ -440,14 +531,14 @@ void loop()
         g=255;
         b=255;
         rgb();
-        system_stat = 1;
+        system_stat = STAT_STATIC;
       }
       if(arg[1] == '0') {
         r=0;
         g=0;
         b=0;
         rgb();
-        system_stat = 0;
+        system_stat = STAT_OFF;
       }
     }
 
@@ -459,10 +550,13 @@ void loop()
         }
       }
       if(arg[1] == 'R') {
-        system_stat = 2;
+        system_stat = STAT_RAND;
       }
       if(arg[1] == 'F') {
-        system_stat = 3;
+        system_stat = STAT_FLASH;
+      }
+      if(arg[1] == 'U') {
+        system_stat = STAT_UFO;
       }
     }
 
@@ -592,6 +686,16 @@ void loop()
     }
   }
 }
+
+
+
+
+
+
+
+
+
+
 
 
 
