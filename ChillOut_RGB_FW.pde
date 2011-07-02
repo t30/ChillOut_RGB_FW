@@ -15,8 +15,8 @@
 //!< @param MCU pin
 
 //pinout PCB
-/*! @name INPUT IR PinOut
- Defenizione delle connessioni dell IR Receiver all MCU
+/*! @name INPUT IR/RF PinOut
+ Defenizione delle connessioni dell IR/RF Receiver all MCU
  @param MCU pin  */
 //@{
 #define GND_PIN 15        //!< Pin di massa - OUTPUT
@@ -73,7 +73,9 @@ int incomingByte = 0;
 //@{
 
 //!  Numero massimo di stati in cui si puo' trovare il sistema.
-#define MAX_STATUS 3
+/*!  Questa variabile e' usata per gestire i cicli fra gli stati, ad esempio
+ con il tasto di un telecomando ir "AV/TV/VCR"   */
+#define MAX_STATUS 4
 /*!  Da tenere presente che sebbene lo stato 0 indichi il LED spento.
  Anche lo 0 e' uno stato a tutti gli effetti  */
 #define STAT_OFF       0x00    //!<  0 = off                    @todo  Non ancora usata 
@@ -435,7 +437,7 @@ void bedazzle(int ledmax, int pulselensec, int freqmin, int freqmax) {
     rgb();
     //_delay_ms(pulsedelay);
     /*!  \arg Se lo stato del sistema e' cambiato esce dal loop (contenuto nella variabile var::system_stat )  */
-    if (system_stat != 2) return;
+    if (system_stat != STAT_FLASH) return;
   }
 }
 
@@ -686,6 +688,7 @@ void loop()
     }
   }
 }
+
 
 
 
