@@ -13,7 +13,7 @@
 
 void setup() {
   /*!  <b> Operazioni eseguite dalla funzione: </b>  */
-  
+
   /*!  - Start-up porta seriale e ricevitore IR
    	\arg Avvio della porta seriale  */
   Serial.begin(9600); 
@@ -114,6 +114,9 @@ void loop() {
     case STAT_UFO:
       RGBufo();
       break;
+    case STAT_CIRCLE:
+      RGBcircle();
+      break;
     }
   } 
   else {
@@ -128,6 +131,7 @@ void loop() {
   }
 
 }
+
 
 
 

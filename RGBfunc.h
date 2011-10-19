@@ -112,6 +112,45 @@ void RGBufo(){
   rgb();
 }
 
+/*!  Effetto fading su giro colori (R-G-B) */
+//! Passaggio graduale fra diverse tonalita' del colore attuale
+void RGBcircle(){
+  switch(DYNcolor){
+  case DYN_COL_RED:
+    if(r < DESTvalue)    r++;
+    if(r > DESTvalue)    r--;
+    if(g > 0)            g--;
+    if(b > 0)            b--;
+    if(r == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_GREEN:
+    if(g < DESTvalue)    g++;
+    if(g > DESTvalue)    g--;
+    if(r > 0)            r--;
+    if(b > 0)            b--;
+    if(g == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_BLUE:
+    if(b < DESTvalue)    b++;
+    if(b > DESTvalue)    b--;
+    if(r > 0)            r--;
+    if(g > 0)            g--;
+    if(b == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_OFF:
+    if(r>g && r>b)    DYNcolor=DYN_COL_GREEN;
+    if(g>r && g>b)    DYNcolor=DYN_COL_BLUE;
+    if(b>g && b>r)    DYNcolor=DYN_COL_RED;
+    if(r==g && r==b)  DYNcolor=DYN_COL_RED;  // exception
+    DESTvalue = 255;
+    //DESTvalue = random(1,max_pwm);
+    break;
+  case DYN_COL_ERR:
+    break;
+  }
+  rgb();
+}
+
 #endif
 
 

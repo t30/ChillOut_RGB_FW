@@ -24,6 +24,7 @@
 #define STAT_RAND      0x02    //!<  2 = rand_col function      @todo  Usata in parte 
 #define STAT_FLASH     0x03    //!<  3 = flash function         @todo  Usata in parte
 #define STAT_UFO       0x04    //!<  4 = ufo function
+#define STAT_CIRCLE    0x05    //!<  5 = Circle function !! Synchronized func
 
 //! Codice stato attuale in cui si trova il sistema
 int system_stat = STAT_OFF; //!< La variabile dovra' assumere solo valori predefiniti dalle define STAT_*
