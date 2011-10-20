@@ -1,13 +1,14 @@
-/*! @file COMfunc.h
+/*! @file COM_Base.pde
+ This file contain the function need to processing data from all kind of comunication protocol.\n
+ All data was put by adhoc function in data_com array.\n
+ With the content of this file let's process it!
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
  @version 0.0.1-RF brach
- @date 31th july 2011 */
-#ifndef	COMFUNC_H
-#define	COMFUNC_H
+ @date 21th October 2011 */
 
-
+//!  Converte un esadecimale char in un integer
 int HEXcharTOint(char base){
   unsigned int color;
   if(base>='0' && base<='9'){
@@ -25,7 +26,7 @@ int HEXcharTOint(char base){
 int HEXtoRGB(char first,char second){
   int final = 0;
   char value[]={
-    second, first                         };
+    second, first                           };
   for(int i = 0; i < 2; i++){
     final = final + ( HEXcharTOint(value[i]) << (4*i) ); 
   }
@@ -33,10 +34,10 @@ int HEXtoRGB(char first,char second){
   return final;
 }
 
-unsigned int HEXtoPeriod(char first,char second, char third){
+unsigned long HEXtoPeriod(char first,char second, char third){
   int final = 0;
   char value[]={
-    third, second, first                         };
+    third, second, first         };
   for(int i = 0; i < 3; i++){
     final = final + ( HEXcharTOint(value[i]) << (4*i) ); 
   }
@@ -44,6 +45,9 @@ unsigned int HEXtoPeriod(char first,char second, char third){
   return final;
 }
 
+//! Processa i dati presenti nel buffer di ricezione
+/*! I dati provenienti dalle comunicazioni che possono essere disponibili sul dispositivo vengono parcheggiati nel buffer var::com_data .\n
+ Le funzioni di processing dei vari protocolli (eg. PSProcess) dopo aver completato l'aggiornamento del buffer, chiamano questa funzione per l'esecuzione condizionata dei comandi.\n  */
 void COMprocess(){
   DBGp_COM(7,"%s#EOL\n",com_data);
 
@@ -53,18 +57,24 @@ void COMprocess(){
     switch(com_data[4]){
     case'0':      
       //fast task res 1ms (from 1 to 4097 msec)
-      period = (HEXtoPeriod(com_data[5],com_data[6],com_data[7]) + 1) ;
-      DBGp_COM(0,"NewPeriodFast setting=> clk: %u\n", period);
-      Period.interval(period);
+      fastPeriod = (HEXtoPeriod(com_data[5],com_data[6],com_data[7]) + 1) ;
+      DBGp_COM(0,"NewPeriodFast setting (ms)=> clk: %u\n", fastPeriod);
+      FastTask.interval(fastPeriod);
       break;
     case'1':      
       //slow task  res 1s (1000ms) (from 1 to 4097 sec)
-      periodUpdate = ((HEXtoPeriod(com_data[5],com_data[6],com_data[7]) + 1)*1000) ;
-      DBGp_COM(0,"NewPeriodSlow setting=> clk: %u\n", periodUpdate);
-      Update.interval(periodUpdate);
+      slowPeriod = ((HEXtoPeriod(com_data[5],com_data[6],com_data[7]) + 1)*1000) ;
+      DBGp_COM(0,"NewPeriodSlow setting (ms)=> clk: %u\n", slowPeriod);
+      SlowTask.interval(slowPeriod);
+      break;
+    case'2':      
+      //slow task  res 1s (1000ms) (from 1 to 4097 sec)
+      logPeriod = ((HEXtoPeriod(com_data[5],com_data[6],com_data[7]) + 1)*1000) ;
+      DBGp_COM(0,"NewPeriodLog setting (ms)=> clk: %u\n", logPeriod);
+      LogTask.interval(logPeriod);
       break;
     default:
-      DBGp_COM(1,"ERR clk=> char not recognized: %c\n", com_data[4]);
+      DBGp_ERR(1,"ERR clk=> char not recognized: %c\n", com_data[4]);
     }
   }
 
@@ -150,7 +160,7 @@ void COMprocess(){
   //strcpy(com_data,"000000000");
 }
 
-#endif
+
 
 
 

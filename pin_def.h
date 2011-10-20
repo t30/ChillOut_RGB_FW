@@ -8,7 +8,10 @@
 #define	PIN_DEF_H
 
 //! Pin di segnalazione POWER On/Off.
-#define LEDPP 13 //!< Sul Pin 13 e' gia' connesso sul Circuito Stampato un LED - OUTPUT
+/*! Sul pin13 della scheda, dove spesso e' gia' connesso un led
+NON e'possibile collegarsi, in quanto usato dal chip ethernet.
+*/
+#define STATUS_PIN 13
 //!< @param MCU pin
 
 //pinout PCB

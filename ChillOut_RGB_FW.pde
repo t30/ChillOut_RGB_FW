@@ -3,13 +3,14 @@
  @par Company:
  MyCompany
  @version 0.0.1-RF brach
- @date 27th july 2011 */
+ @date 21th October 2011 */
 #include <Metro.h>
 #include <VirtualWire.h>
 #include "pin_def.h"
 #include "global.h"
 #include "timing.h"
-
+#include "Debug.h"
+#include "RGBfunc.h"
 
 void setup() {
   /*!  <b> Operazioni eseguite dalla funzione: </b>  */
@@ -32,7 +33,7 @@ void setup() {
   /*! \arg Settaggio var::VCC_PIN */
   pinMode(VCC_PIN, OUTPUT);		
   /*! \arg Settaggio var::LEDPP */
-  pinMode(LEDPP, OUTPUT);		
+  pinMode(STATUS_PIN, OUTPUT);		
   //!\n
 
   /*!- Settaggio dello stato dei PIN di alimentazione del ricevitore IR
@@ -43,7 +44,7 @@ void setup() {
   //!\n
 
   /*!	\arg Accensione del LED di stato var::LEDPP*/
-  digitalWrite(LEDPP,HIGH);		
+  digitalWrite(STATUS_PIN,HIGH);		
   //!\n
 
   //#ifdef  RF
@@ -60,87 +61,38 @@ void setup() {
 
 }
 
-#include "debug.h"
-#include "RGBfunc.h"
-#include "COMfunc.h"
-#include "PSfunc.h"
+
+//#include "RGBfunc.h"
+//#include "COMfunc.h"
+//#include "PSfunc.h"
 //#ifdef  RF
-#include "RFfunc.h"
+//#include "RFfunc.h"
 //#endif
 
-/*! Funzione che emette tre lampeggi da 200ms dei tre colori principali del led*/
-//! Funzione di test LED RGB
-void LedInitTest() {
-  led_off();
-  led_red();
-  delay(DELAY_INIT_TEST_ON);
-  led_off();
-  delay(DELAY_INIT_TEST_OFF);
-  led_green();
-  delay(DELAY_INIT_TEST_ON);
-  led_off();
-  delay(DELAY_INIT_TEST_OFF);
-  led_blue();
-  delay(DELAY_INIT_TEST_ON);
-  led_off();
-  delay(DELAY_INIT_TEST_OFF);
-}
 
-//#ifdef  RF
-void RFInit(){
-  vw_set_rx_pin(RECV_PIN);
-  vw_setup(RF_BIT_PER_SEC);	   // Bits per sec
-  vw_rx_start();                   // Start the receiver PLL running
-  DBGp_RF(5,"init RF\n", r);
-}
-//#endif
+
+
 
 
 void loop() {
-  //  PSprocess();
-  //#ifdef  RF
-  // RFprocess();
-  //#endif
 
-  if (Period.check() == 1) {
-    Period.reset();
-    switch(system_stat){
-    case STAT_RAND:
-      RGBrandom();
-      break;
-    case STAT_FLASH:
-      //RGBflash();
-      break;
-    case STAT_UFO:
-      RGBufo();
-      break;
-    case STAT_CIRCLE:
-      RGBcircle();
-      break;
-    }
+  if (FastTask.check() == 1) {
+    FastTask.reset();
+    TSKfast();
   } 
   else {
     PSprocess();
     RFprocess();
   }
 
-  if (Update.check() == 1) {
-    Update.reset();
-    DBGp(5,"Actual RGB state - r: %u g: %u b: %u => com_data: %s \n", r, g, b, com_data); 	
+  if (SlowTask.check() == 1) {
+    SlowTask.reset();
+    TSKslow();
+  }
 
+  if (LogTask.check() == 1) {
+    LogTask.reset();
+    TSKlog();
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

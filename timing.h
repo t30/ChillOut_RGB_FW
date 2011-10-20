@@ -15,20 +15,29 @@
 /*!  @name  Task timing function definition
  //  Creazione degli oggetti timer utilizzati per le chiamate ai task  */
 //@{
-//!Setting up execution frequency f[kHz]= 1/period[msec]
-unsigned int period = 50;
+//!Setting up execution frequency f[Hz]= 1000/period[msec]
+unsigned int fastPeriod = 50;
 //!  Task Veloce.
-/*!  Utilizzato per mantenere aggiornate le varibili interne del sistema.  */
-Metro Period = Metro(period);
+/*!  Utilizzato per mantenere aggiornate le varibili interne del sistema. (FastFunc.pde) */
+Metro FastTask = Metro(fastPeriod);
 
-//!Setting up execution frequency f[kHz]= 1/period[msec]
-unsigned int periodUpdate = 5000;
+//!Setting up execution frequency f[Hz]= 1000/period[msec]
+unsigned int slowPeriod = 10000;
+//unsigned int slowPeriod = 8000;
 //!  Task Lento.
 /*!  Utilizzato per mantenere aggiornato lo stato dei sensori e componenti lenti
- //  in risposta o nella variazione del loro segnale.  */
-Metro Update = Metro(periodUpdate); 
+ //  in risposta o nella variazione del loro segnale. (SlowFunc.pde) */
+Metro SlowTask = Metro(slowPeriod); 
+
+//!Setting up execution frequency f[Hz]= 1000/period[msec]
+unsigned long logPeriod = 600000L;
+//unsigned long logPeriod = 10000L;
+//!  Task di log.
+/*!  Utilizzato per eseguire eventuali operazioni logging su dispositivi remoti. (LogFunc.pde) */
+Metro LogTask = Metro(logPeriod); 
 //@}
 
 #endif
+
 
 

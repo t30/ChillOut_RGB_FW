@@ -1,11 +1,11 @@
-/*! @file RFfunc.h
+/*! @file COM_RF.pde
+Function for Serial Port connection (incoming cmd).
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
  @version 0.0.1-RF brach
- @date 27th july 2011 */
-#ifndef	RFFUNC_H
-#define	RFFUNC_H
+ @date 21th October 2011 */
+
 
 void RFprocess(){
   uint8_t buf[VW_MAX_MESSAGE_LEN];
@@ -25,11 +25,12 @@ void RFprocess(){
   }
 }
 
-#endif
-
-
-
-
-
-
+//#ifdef  RF
+void RFInit(){
+  vw_set_rx_pin(RECV_PIN);
+  vw_setup(RF_BIT_PER_SEC);	   // Bits per sec
+  vw_rx_start();                   // Start the receiver PLL running
+  DBGp_RF(5,"init RF\n", r);
+}
+//#endif
 

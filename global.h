@@ -1,7 +1,7 @@
 /*! @file global.h
  @author Ing. M.Lampugnani
  @par Company:
- MyCompany
+ MyCompany 
  @version 0.0.1-RF brach
  @date 27th july 2011 */
 #ifndef	GLOBAL_H

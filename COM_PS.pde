@@ -1,14 +1,15 @@
-/*! @file PSfunc.h
+/*! @file COM_PS.pde
+Function for Serial Port connection (incoming cmd).
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
  @version 0.0.1-RF brach
- @date 27th july 2011 */
-#ifndef	PSFUNC_H
-#define	PSFUNC_H
-
-//Se ci sono dati disponibili nel buffer seriale elabora il primo e poi esce.
-//dall'esecuzione della funzione
+ @date 21th October 2011 */
+ 
+//! Processa i dati disponibili nel buffer seriale.
+/*!Se ci sono dati disponibili elabora il primo e poi esce
+//dall'esecuzione della funzione.\n
+//Per essere produttiva, la funzione deve essere chiamata di continuo dal firmware nei momenti in cui non risulta impegnato da altre esecuzioni.*/
 void PSprocess(){
   if (Serial.available() > 0) {
     //system_stat = 1;
@@ -37,7 +38,6 @@ void PSprocess(){
   
 }
 
-#endif
 
 
 
