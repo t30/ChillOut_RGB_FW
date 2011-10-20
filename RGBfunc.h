@@ -50,6 +50,7 @@ void RGBrandom(){
     if(b > DESTvalue)  b--;
     if(b == DESTvalue) DYNcolor = DYN_COL_OFF;
     break;
+  case DYN_COL_INIT:
   case DYN_COL_OFF:
     randomSeed(analogRead(0));
     DYNcolor = random(1, (DYN_COL_MAX+1) );
@@ -62,7 +63,7 @@ void RGBrandom(){
 }
 
 /*!  Effetto fading su singolo colore (R-G-B-W) */
-//! Passaggio graduale fra diverse tonalita' del colore attualmente piu' forte
+//! Passaggio random graduale fra diverse tonalita' del colore attualmente piu' forte
 void RGBufo(){
   switch(DYNcolor){
   case DYN_COL_WHITE:
@@ -99,6 +100,7 @@ void RGBufo(){
     if(g > 0)            g--;
     if(b == DESTvalue) DYNcolor = DYN_COL_OFF;
     break;
+  case DYN_COL_INIT:
   case DYN_COL_OFF:
     if(r>g && r>b)    DYNcolor=DYN_COL_RED;
     if(g>r && g>b)    DYNcolor=DYN_COL_GREEN;
@@ -136,6 +138,9 @@ void RGBcircle(){
     if(r > 0)            r--;
     if(g > 0)            g--;
     if(b == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_INIT:
+    DYNcolor=DYN_COL_RED;
     break;
   case DYN_COL_OFF:
     if(r>g && r>b)    DYNcolor=DYN_COL_GREEN;

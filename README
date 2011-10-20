@@ -8,4 +8,8 @@ This is the Firmware's repositories
 Complete description (it):
 http://blog.lampugnani.org/arduino/chillout-rgb-ambient-lamp/
 
+## RF branch ##
+this brach enable, with right hardware, to receive command through
+RF board.
+
 author:		Ing. M.Lampugnani

@@ -23,9 +23,9 @@
 //#define RECV_PIN 14       //!< Pin di ricezione dati - INPUT
 
 // 433 RF MODULE
-#define GND_PIN 16        //!< Pin di massa - OUTPUT
-#define VCC_PIN 14        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
-#define RECV_PIN 15       //!< Pin di ricezione dati - INPUT
+//#define GND_PIN 16        //!< Pin di massa - OUTPUT
+//#define VCC_PIN 14        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
+//#define RECV_PIN 15       //!< Pin di ricezione dati - INPUT
 
 //ARDUINO TEST
 //#define GND_PIN 17        //!< Pin di massa - OUTPUT
@@ -33,9 +33,9 @@
 //#define RECV_PIN 15       //!< Pin di ricezione dati - INPUT
 
 //ARDUINO-mega TEST
-//#define GND_PIN 27        //!< Pin di massa - OUTPUT
-//#define VCC_PIN 28        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
-//#define RECV_PIN 23       //!< Pin di ricezione dati - INPUT
+#define GND_PIN 27        //!< Pin di massa - OUTPUT
+#define VCC_PIN 28        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
+#define RECV_PIN 23       //!< Pin di ricezione dati - INPUT
 
 //@}
 
@@ -51,14 +51,14 @@
 //#define BLUE_PIN 5 	//!< Pin dell'MCU al quale e' connesso l'anodo Blu (B)   - OUTPUT
 
 // 433 RF MODULE
-#define RED_PIN 11  	//!< anodo Rosso (R)
-#define GREEN_PIN 3	//!< anodo Verde (G)
-#define BLUE_PIN 6 	//!< anodo Blu (B)
+//#define RED_PIN 11  	//!< anodo Rosso (R)
+//#define GREEN_PIN 3	//!< anodo Verde (G)
+//#define BLUE_PIN 6 	//!< anodo Blu (B)
 
 //ARDUINO-mega TEST 
-//#define RED_PIN 8  	//!< anodo Rosso (R)
-//#define GREEN_PIN 4	//!< anodo Verde (G)
-//#define BLUE_PIN 7 	//!< anodo Blu (B)
+#define RED_PIN 8  	//!< anodo Rosso (R)
+#define GREEN_PIN 4	//!< anodo Verde (G)
+#define BLUE_PIN 7 	//!< anodo Blu (B)
 
 //@}
 

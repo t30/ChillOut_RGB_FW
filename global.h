@@ -68,13 +68,13 @@ int incomingByte = 0;
 
 #define DYN_COL_MAX 3
 
+#define DYN_COL_INIT        0xFD    //!<  253 = Ciclo dinamico colori - init
 #define DYN_COL_ERR         0xFE    //!<  254 = Ciclo dinamico colori - err                    
 #define DYN_COL_OFF         0xFF    //!<  255 = Ciclo dinamico colori - terminato                    
 #define DYN_COL_WHITE       0x00    //!<    0 = Ciclo dinamico colori - white                  
 #define DYN_COL_RED         0x01    //!<    1 = Ciclo dinamico colori - red          
 #define DYN_COL_GREEN       0x02    //!<    2 = Ciclo dinamico colori - green    
 #define DYN_COL_BLUE        0x03    //!<    3 = Ciclo dinamico colori - blue 
-//#define STAT_UFO          0x04    //!<    4 = ufo function
 
 #define DYN_DEST_OFF        0xFF
 
@@ -82,7 +82,7 @@ int DYNcolor = DYN_COL_OFF;   //!< La variabile dovra' assumere solo valori pred
 int DESTvalue = DYN_DEST_OFF; //!< La variabile dovra' assumere solo valori compresi fra 0 e max_pwm
 
 void ReInitDynVars(){
-  DYNcolor = DYN_COL_OFF;
+  DYNcolor = DYN_COL_INIT;
   DESTvalue = DYN_DEST_OFF;  //!< @todo non dovrebbe essere necessario riinizializzarla
 }
 //@}
