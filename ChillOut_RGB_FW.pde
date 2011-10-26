@@ -1,4 +1,4 @@
-/*! @file TaskSync.h
+/*! @file ChillOut_RGB_FW.h
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
@@ -32,7 +32,7 @@ void setup() {
   pinMode(GND_PIN, OUTPUT);		
   /*! \arg Settaggio var::VCC_PIN */
   pinMode(VCC_PIN, OUTPUT);		
-  /*! \arg Settaggio var::LEDPP */
+  /*! \arg Settaggio var::STATUS_PIN */
   pinMode(STATUS_PIN, OUTPUT);		
   //!\n
 
@@ -43,7 +43,7 @@ void setup() {
   digitalWrite(VCC_PIN, HIGH);  	
   //!\n
 
-  /*!	\arg Accensione del LED di stato var::LEDPP*/
+  /*!	\arg Accensione del LED di stato var::STATUS_PIN*/
   digitalWrite(STATUS_PIN,HIGH);		
   //!\n
 

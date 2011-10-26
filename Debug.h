@@ -13,14 +13,11 @@
 
 #define DBGp(lvlDBG, fmt, ... )                      p(lvlDBG, fmt, __VA_ARGS__ )
 #define DBGp_ERR(lvlDBG, fmt, ... )                  DBGp(lvlDBG, fmt, __VA_ARGS__ )
-#define DBGp_STAT(lvlDBG, fmt, ... )                  DBGp(lvlDBG, fmt, __VA_ARGS__ )
+#define DBGp_STAT(lvlDBG, fmt, ... )                 DBGp(lvlDBG, fmt, __VA_ARGS__ )
 
 #define DBGp_COM(lvlDBG, fmt, ... )                  DBGp(lvlDBG, fmt, __VA_ARGS__ )
 #define DBGp_PS(lvlDBG, fmt, ... )                   DBGp(lvlDBG, fmt, __VA_ARGS__ )
 #define DBGp_RF(lvlDBG, fmt, ... )                   DBGp(lvlDBG, fmt, __VA_ARGS__ )
-
-#define DBGp_LDR(lvlDBG, fmt, ... )                  DBGp(lvlDBG, fmt, __VA_ARGS__ )
-#define DBGp_TEMP(lvlDBG, fmt, ... )                 DBGp(lvlDBG, fmt, __VA_ARGS__ )
 
 //!  Definition of  default level debug
 #define DEBUG  9
