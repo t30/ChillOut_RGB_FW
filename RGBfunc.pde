@@ -9,6 +9,16 @@
 #define Winc         r++;g++;b++;
 #define Wdec         r--;g--;b--;
 
+void RGBinit(){
+  /*!  - Settaggio dei pin di OUTPUT  
+   \arg Settaggio var::RED_PIN  */
+  pinMode(RED_PIN, OUTPUT);		
+  /*! \arg Settaggio var::GREEN_PIN */
+  pinMode(GREEN_PIN, OUTPUT);		
+  /*! \arg Settaggio var::BLUE_PIN */
+  pinMode(BLUE_PIN, OUTPUT);
+}
+  
 /*! Funzione che emette tre lampeggi da 200ms dei tre colori principali del led*/
 //! Funzione di test LED RGB
 void LedInitTest() {
@@ -24,7 +34,7 @@ void LedInitTest() {
   led_blue();
   delay(DELAY_INIT_TEST_ON);
   led_off();
-  delay(DELAY_INIT_TEST_OFF);
+  //delay(DELAY_INIT_TEST_OFF);
 }
 
 /*! Dopo che i valori da scrivere sul led vengono "appoggiati" nelle variabili r, g, b; 

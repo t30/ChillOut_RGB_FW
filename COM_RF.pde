@@ -26,7 +26,7 @@ void RFprocess(){
 }
 
 //#ifdef  RF
-void RFInit(){
+void RFsetup(){
   vw_set_rx_pin(RECV_PIN);
   vw_setup(RF_BIT_PER_SEC);	   // Bits per sec
   vw_rx_start();                   // Start the receiver PLL running
@@ -34,3 +34,19 @@ void RFInit(){
 }
 //#endif
 
+void RFinit(){
+    /*! \arg Settaggio var::GND_PIN */
+  pinMode(GND_PIN, OUTPUT);		
+  /*! \arg Settaggio var::VCC_PIN */
+  pinMode(VCC_PIN, OUTPUT);		
+  /*! \arg Settaggio var::STATUS_PIN */
+  pinMode(STATUS_PIN, OUTPUT);		
+  //!\n
+
+  /*!- Settaggio dello stato dei PIN di alimentazione del ricevitore IR
+   \arg Settaggio stato LOW al var::GND_PIN  */
+  digitalWrite(GND_PIN, LOW);		
+  /*!   \arg Settaggio stato HIGH al pin var::VCC_PIN */
+  digitalWrite(VCC_PIN, HIGH);  	
+  //!\n
+}

@@ -7,7 +7,7 @@
 #ifndef	TIMING_H
 #define	TIMING_H
 
-#define DELAY_INIT_TEST_OFF  200
+#define DELAY_INIT_TEST_OFF  20
 #define DELAY_INIT_TEST_ON   200
 
 #define RF_BIT_PER_SEC       2000

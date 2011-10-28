@@ -5,8 +5,13 @@
  @version 0.0.1-RF brach
  @date 21th October 2011 */
 
-#define CHIP_328
-//#define CHIP_1280
+#if defined __AVR_ATmega168__ || defined __AVR_ATmega328P__
+  #define CHIP_328
+#endif
+
+#if defined __AVR_ATmega1280__
+  #define CHIP_1280
+#endif
 
 #include <Metro.h>
 #include <VirtualWire.h>
@@ -26,34 +31,37 @@ void setup() {
 
   /*!  - Settaggio dei pin di OUTPUT  
    \arg Settaggio var::RED_PIN  */
-  pinMode(RED_PIN, OUTPUT);		
+  //pinMode(RED_PIN, OUTPUT);		
   /*! \arg Settaggio var::GREEN_PIN */
-  pinMode(GREEN_PIN, OUTPUT);		
+  //pinMode(GREEN_PIN, OUTPUT);		
   /*! \arg Settaggio var::BLUE_PIN */
-  pinMode(BLUE_PIN, OUTPUT);
+  //pinMode(BLUE_PIN, OUTPUT);
 
+  RGBinit();
+  RFinit();
   /*! \arg Settaggio var::GND_PIN */
-  pinMode(GND_PIN, OUTPUT);		
+  //pinMode(GND_PIN, OUTPUT);		
   /*! \arg Settaggio var::VCC_PIN */
-  pinMode(VCC_PIN, OUTPUT);		
+  //pinMode(VCC_PIN, OUTPUT);		
   /*! \arg Settaggio var::STATUS_PIN */
-  pinMode(STATUS_PIN, OUTPUT);		
+  //pinMode(STATUS_PIN, OUTPUT);		
   //!\n
 
   /*!- Settaggio dello stato dei PIN di alimentazione del ricevitore IR
    \arg Settaggio stato LOW al var::GND_PIN  */
-  digitalWrite(GND_PIN, LOW);		
+  //digitalWrite(GND_PIN, LOW);		
   /*!   \arg Settaggio stato HIGH al pin var::VCC_PIN */
-  digitalWrite(VCC_PIN, HIGH);  	
+  //digitalWrite(VCC_PIN, HIGH);  	
   //!\n
 
   /*!	\arg Accensione del LED di stato var::STATUS_PIN*/
-  digitalWrite(STATUS_PIN,HIGH);		
+  //digitalWrite(STATUS_PIN,HIGH);		
+  blinkStatus();		
   //!\n
 
   //#ifdef  RF
-  /*!	\arg Init modulo RF */
-  RFInit();
+  /*!	\arg Setup modulo RF */
+  RFsetup();
   //#endif
 
   /*!  - Final Test 
