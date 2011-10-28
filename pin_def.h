@@ -25,21 +25,24 @@ NON e'possibile collegarsi, in quanto usato dal chip ethernet.
 //#define VCC_PIN 16        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
 //#define RECV_PIN 14       //!< Pin di ricezione dati - INPUT
 
+#ifdef CHIP_328
 // 433 RF MODULE
 #define GND_PIN 16        //!< Pin di massa - OUTPUT
 #define VCC_PIN 14        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
 #define RECV_PIN 15       //!< Pin di ricezione dati - INPUT
+#endif
 
 //ARDUINO TEST
 //#define GND_PIN 17        //!< Pin di massa - OUTPUT
 //#define VCC_PIN 14        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
 //#define RECV_PIN 15       //!< Pin di ricezione dati - INPUT
 
-//ARDUINO-mega TEST
-//#define GND_PIN 27        //!< Pin di massa - OUTPUT
-//#define VCC_PIN 28        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
-//#define RECV_PIN 23       //!< Pin di ricezione dati - INPUT
-
+#ifdef CHIP_1280
+//433 RF ARDUINO-mega TEST
+#define GND_PIN 27        //!< Pin di massa - OUTPUT
+#define VCC_PIN 28        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
+#define RECV_PIN 23       //!< Pin di ricezione dati - INPUT
+#endif
 //@}
 
 
@@ -53,15 +56,19 @@ NON e'possibile collegarsi, in quanto usato dal chip ethernet.
 //#define GREEN_PIN 9 	//!< Pin dell'MCU al quale e' connesso l'anodo Verde (G) - OUTPUT
 //#define BLUE_PIN 5 	//!< Pin dell'MCU al quale e' connesso l'anodo Blu (B)   - OUTPUT
 
+#ifdef CHIP_328
 // 433 RF MODULE
 #define RED_PIN 11  	//!< anodo Rosso (R)
 #define GREEN_PIN 3	//!< anodo Verde (G)
 #define BLUE_PIN 6 	//!< anodo Blu (B)
+#endif
 
-//ARDUINO-mega TEST 
-//#define RED_PIN 8  	//!< anodo Rosso (R)
-//#define GREEN_PIN 4	//!< anodo Verde (G)
-//#define BLUE_PIN 7 	//!< anodo Blu (B)
+#ifdef CHIP_1280
+//433 RF ARDUINO-mega TEST 
+#define RED_PIN 8  	//!< anodo Rosso (R)
+#define GREEN_PIN 4	//!< anodo Verde (G)
+#define BLUE_PIN 7 	//!< anodo Blu (B)
+#endif
 
 //@}
 

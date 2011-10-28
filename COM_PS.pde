@@ -7,7 +7,7 @@ Function for Serial Port connection (incoming cmd).
  @date 21th October 2011 */
  
 //! Processa i dati disponibili nel buffer seriale.
-/*!Se ci sono dati disponibili elabora il primo e poi esce
+/*! Se ci sono dati disponibili elabora il primo e poi esce
 //dall'esecuzione della funzione.\n
 //Per essere produttiva, la funzione deve essere chiamata di continuo dal firmware nei momenti in cui non risulta impegnato da altre esecuzioni.*/
 void PSprocess(){

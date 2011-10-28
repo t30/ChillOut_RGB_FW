@@ -13,7 +13,7 @@ void TSKfast(){
       RGBrandom();
       break;
     case STAT_FLASH:
-      //RGBflash();
+      RGBflash();
       break;
     case STAT_UFO:
       RGBufo();

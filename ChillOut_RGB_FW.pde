@@ -4,6 +4,10 @@
  MyCompany
  @version 0.0.1-RF brach
  @date 21th October 2011 */
+
+#define CHIP_328
+//#define CHIP_1280
+
 #include <Metro.h>
 #include <VirtualWire.h>
 #include "pin_def.h"
@@ -60,19 +64,6 @@ void setup() {
   //  p("Decimal a: %l\nDecimal unsigned a: %lu\n", millis(), millis()); 	
 
 }
-
-
-//#include "RGBfunc.h"
-//#include "COMfunc.h"
-//#include "PSfunc.h"
-//#ifdef  RF
-//#include "RFfunc.h"
-//#endif
-
-
-
-
-
 
 void loop() {
 

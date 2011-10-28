@@ -9,7 +9,7 @@
 
 //#define RF
 
-/*!  @name  State 
+/*! @name  State 
  Variabili e definizioni utilizzate per la gestione degli stati del sistema.  */
 //@{
 
@@ -33,18 +33,18 @@ int system_stat = STAT_OFF; //!< La variabile dovra' assumere solo valori predef
 /*! @name Colore Attuale RGB
  	Variabili in cui vengono salvati i valori da scrivere sull'uscita per generare un colore \n
  	Dopo aver cambiato il valore di queste variabili, viene chiamata la funzione rgb() per scriverli fisicamente
- @param [0-255]  */
+  @param [0-255]  */
 //@{
 
 /*!  Da tenere presente che anche con valori bassi il led potrebbe non dare segno di vita*/
-unsigned int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-255); con 0 non si accenderebbe proprio il led
+unsigned int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-254); con 0 non si accenderebbe proprio il led
 /*unsigned*/int r=100; //!< Variabile colore Rosso	(Red) - Questa variabile non puo' mai superare il valore di var::max_pwm
 /*unsigned*/int g=100; //!< Variabile colore Verde	(Green) - Questa variabile non puo' mai superare il valore di var::max_pwm
 /*unsigned*/int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai superare il valore di var::max_pwm
 
 //@}
 
-/*!  @name Variaibli di appoggio
+/*! @name Variaibli di appoggio
  Varibili di appoggio utilizzate per la comunicazione seriale e RF (se presente).  */
 //@{
 

@@ -42,8 +42,8 @@ void rgb() {
 
 }
 
-/*!  Con sfumatura nei colori intermedi  */
 //! Passaggio dal colore attuale ad uno RANDOM
+/*! Con sfumatura nei colori intermedi  */
 void RGBrandom(){
   switch(DYNcolor){
   case DYN_COL_RED:
@@ -63,7 +63,7 @@ void RGBrandom(){
     break;
   case DYN_COL_INIT:
   case DYN_COL_OFF:
-    randomSeed(analogRead(0));
+    randomSeed(analogRead(6));
     DYNcolor = random(1, (DYN_COL_MAX+1) );
     DESTvalue = random(0,max_pwm);
     break;
@@ -73,8 +73,38 @@ void RGBrandom(){
   rgb();
 }
 
-/*!  Effetto fading su singolo colore (R-G-B-W) */
+//! Passaggio rapido dei colori in modalita' RANDOM
+/*! Flash random nei colori primari (R-G-B)  */
+void RGBflash(){
+  switch(DYNcolor){
+  case DYN_COL_RED:
+    r = 255;
+    if(r == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_GREEN:
+    g = 255;
+    if(g == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_BLUE:
+    b = 255;
+    if(b == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_INIT:
+  case DYN_COL_OFF:
+    r = 0;
+    g = 0;
+    b = 0;
+    randomSeed(analogRead(6));
+    DYNcolor = random(1, (DYN_COL_MAX+1) );
+    break;
+  case DYN_COL_ERR:
+    break;
+  }
+  rgb();
+}
+
 //! Passaggio random graduale fra diverse tonalita' del colore attualmente piu' forte
+/*! Effetto fading su singolo colore (R-G-B-W) */
 void RGBufo(){
   switch(DYNcolor){
   case DYN_COL_WHITE:
@@ -125,8 +155,8 @@ void RGBufo(){
   rgb();
 }
 
-/*!  Effetto fading su giro colori (R-G-B) */
 //! Passaggio graduale fra diverse tonalita' del colore attuale
+/*! Effetto fading su giro colori (R-G-B) */
 void RGBcircle(){
   switch(DYNcolor){
   case DYN_COL_RED:
@@ -166,6 +196,7 @@ void RGBcircle(){
   }
   rgb();
 }
+
 
 
 
