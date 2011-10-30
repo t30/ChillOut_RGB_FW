@@ -14,7 +14,7 @@
 //!  Numero massimo di stati in cui si puo' trovare il sistema.
 /*!  Questa variabile e' usata per gestire i cicli fra gli stati, ad esempio
  con il tasto di un telecomando ir "AV/TV/VCR"   */
-#define MAX_STATUS 4
+#define MAX_STATUS 5
 /*!  Da tenere presente che sebbene lo stato 0 indichi il LED spento.
  Anche lo 0 e' uno stato a tutti gli effetti  */
 #define STAT_OFF       0x00    //!<  0 = off                    @todo  Non ancora usata 
@@ -25,6 +25,8 @@
 #define STAT_CIRCLE    0x05    //!<  5 = Circle function !! Synchronized func
 
 //! Codice stato attuale in cui si trova il sistema
+/*!  Da tenere presente che il valore con cui vuene settata in fase di dichiarazione,
+     sarà il valore assegnato in fase di avvio del dispositivo.*/
 int system_stat = STAT_OFF; //!< La variabile dovra' assumere solo valori predefiniti dalle define STAT_*
 //@}
 
