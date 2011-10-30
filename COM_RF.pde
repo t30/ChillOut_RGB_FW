@@ -6,7 +6,6 @@ Function for Serial Port connection (incoming cmd).
  @version 0.0.1-RF brach
  @date 21th October 2011 */
 
-
 void RFprocess(){
   uint8_t buf[VW_MAX_MESSAGE_LEN];
   uint8_t buflen = VW_MAX_MESSAGE_LEN;

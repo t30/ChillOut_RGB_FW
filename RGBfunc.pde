@@ -5,7 +5,6 @@
  @version 0.0.1-RF brach
  @date 21th October 2011 */
 
-
 #define Winc         r++;g++;b++;
 #define Wdec         r--;g--;b--;
 

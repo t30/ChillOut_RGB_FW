@@ -7,8 +7,6 @@
 #ifndef	GLOBAL_H
 #define	GLOBAL_H
 
-//#define RF
-
 /*! @name  State 
  Variabili e definizioni utilizzate per la gestione degli stati del sistema.  */
 //@{
