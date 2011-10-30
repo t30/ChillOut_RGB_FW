@@ -17,13 +17,13 @@ RF board.
 
 You will need:
 --------------
-* Of course, an arduino or a dedicated device
-* An RGB led
+* Of course, an arduino or a dedicated device.
+* An RGB led.
   if you use a 20mA/channel RGB led, you nedd only a led and 3 limiter resistor
-  otherwise you will need a led and suitable power controller
-* Arduino IDE
-* Processing IDE (optional)
-* Metro lib
-* VirtualWire lib
+  otherwise you will need a led and suitable power controller.
+* Arduino IDE.
+* Processing IDE (optional).
+* Metro lib.
+* VirtualWire lib.
 
 author:		Ing. M.Lampugnani
