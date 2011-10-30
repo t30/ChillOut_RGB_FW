@@ -29,4 +29,7 @@ You will need:
 * Metro lib.
 * VirtualWire lib.
 
-author:		Ing. M.Lampugnani
+
+
+author: Ing. M.Lampugnani
+-------------------------
