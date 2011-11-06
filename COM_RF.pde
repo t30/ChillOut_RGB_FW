@@ -26,14 +26,15 @@ void RFprocess(){
 
 //#ifdef  RF
 void RFsetup(){
+  DBGp_RF(5,"setup RF\n", r);
   vw_set_rx_pin(RECV_PIN);
   vw_setup(RF_BIT_PER_SEC);	   // Bits per sec
   vw_rx_start();                   // Start the receiver PLL running
-  DBGp_RF(5,"init RF\n", r);
 }
 //#endif
 
 void RFinit(){
+    DBGp_RF(5,"init RF\n", r);
     /*! \arg Settaggio var::GND_PIN */
   pinMode(GND_PIN, OUTPUT);		
   /*! \arg Settaggio var::VCC_PIN */

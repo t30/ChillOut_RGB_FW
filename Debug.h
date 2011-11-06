@@ -11,6 +11,8 @@
 #define	DEBUG_H
 
 #define DBGp(lvlDBG, fmt, ... )                      p(lvlDBG, fmt, __VA_ARGS__ )
+
+#define DBGp_SETUP(lvlDBG, fmt, ... )                DBGp(lvlDBG, fmt, __VA_ARGS__ )
 #define DBGp_ERR(lvlDBG, fmt, ... )                  DBGp(lvlDBG, fmt, __VA_ARGS__ )
 #define DBGp_STAT(lvlDBG, fmt, ... )                 DBGp(lvlDBG, fmt, __VA_ARGS__ )
 

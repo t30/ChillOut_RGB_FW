@@ -88,16 +88,16 @@ void COMprocess(){
   if(com_data[0] == 'p' && com_data[1] == 'r' && com_data[2] == 'g'){
     DBGp_COM(0,"program=> set: %c\n", com_data[4]);
     switch(com_data[4]){
-    case'R':      
+    case'R':		//random
       system_stat = STAT_RAND;
       break;
-    case'F':      
+    case'F':		//flash
       system_stat = STAT_FLASH;
       break;
-    case'U':      
+    case'U':		//ufo
       system_stat = STAT_UFO;
       break;
-    case'C':
+    case'C':		//circle
       system_stat = STAT_CIRCLE;
       break;
     default:
@@ -159,46 +159,4 @@ void COMprocess(){
 
   //strcpy(com_data,"000000000");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

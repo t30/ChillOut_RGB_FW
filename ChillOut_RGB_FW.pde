@@ -1,4 +1,4 @@
-/*! @file ChillOut_RGB_FW.h
+/*! @file ChillOut_RGB_FW.pde
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
@@ -23,19 +23,21 @@
 
 void setup() {
 
-  Serial.begin(9600); 
-  Serial.println("Booting up..");
+  blinkStatus();		
 
+  Serial.begin(COM_BPS); 
+  //Serial.println("Booting up..");
+  DBGp_SETUP(0,"ChillOUT RGB Controller FW %s\n",FW_VER);
+  
   RGBinit();
   RFinit();
 	
-  blinkStatus();		
-
   RFsetup();
 
   LedInitTest();
 
-  Serial.println("Ready!!");
+  DBGp_SETUP(5,"Ready!!\n",FW_VER);
+  //Serial.println("Ready!!");
 
 }
 

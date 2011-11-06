@@ -7,6 +7,12 @@
 #ifndef	GLOBAL_H
 #define	GLOBAL_H
 
+//! Versione Firmware
+#define FW_VER  "0.002"
+//! BPS comunicazione seriale
+#define COM_BPS 9600
+
+
 /*! @name  State 
  Variabili e definizioni utilizzate per la gestione degli stati del sistema.  */
 //@{
@@ -26,9 +32,11 @@
 
 //! Codice stato attuale in cui si trova il sistema
 /*!  Da tenere presente che il valore con cui vuene settata in fase di dichiarazione,
-     sarà il valore assegnato in fase di avvio del dispositivo.*/
+     sara' il valore assegnato in fase di avvio del dispositivo.*/
 int system_stat = STAT_OFF; //!< La variabile dovra' assumere solo valori predefiniti dalle define STAT_*
+
 //@}
+
 
 /*! @name Colore Attuale RGB
  	Variabili in cui vengono salvati i valori da scrivere sull'uscita per generare un colore \n
@@ -43,6 +51,7 @@ unsigned int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-255); c
 /*unsigned*/int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai superare il valore di var::max_pwm
 
 //@}
+
 
 /*! @name Variaibli di appoggio
  Varibili di appoggio utilizzate per la comunicazione seriale e RF (se presente).  */

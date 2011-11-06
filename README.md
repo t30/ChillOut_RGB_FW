@@ -1,4 +1,3 @@
-//RF branch
 ChillOut_RGB ambient lamp project
 =================================
 Chillout RGB is a complete project to build a full 16.8M Color
