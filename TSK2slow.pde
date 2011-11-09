@@ -7,6 +7,6 @@
  @date 21th October 2011 */
 
 void TSKslow(){
-    DBGp(5,"Actual RGB state - r: %u g: %u b: %u => com_data: %s \n", r, g, b, com_data); 	
+    DBGp_STAT(5,"Actual RGB state - r: %u g: %u b: %u => com_data: %s \n", r, g, b, com_data); 	
 }
 

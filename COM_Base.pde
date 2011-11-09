@@ -62,13 +62,13 @@ void COMprocess(){
       FastTask.interval(fastPeriod);
       break;
     case'1':      
-      //slow task  res 1s (1000ms) (from 1 to 4097 sec)
+      //slow task  res 1s (1000ms) (from 1 to 4096 sec)
       slowPeriod = ((HEXtoPeriod(com_data[5],com_data[6],com_data[7]) + 1)*1000) ;
       DBGp_COM(0,"NewPeriodSlow setting (ms)=> clk: %u\n", slowPeriod);
       SlowTask.interval(slowPeriod);
       break;
     case'2':      
-      //slow task  res 1s (1000ms) (from 1 to 4097 sec)
+      //slow task  res 1s (1000ms) (from 1 to 4096 sec)
       logPeriod = ((HEXtoPeriod(com_data[5],com_data[6],com_data[7]) + 1)*1000) ;
       DBGp_COM(0,"NewPeriodLog setting (ms)=> clk: %u\n", logPeriod);
       LogTask.interval(logPeriod);
@@ -101,7 +101,7 @@ void COMprocess(){
       system_stat = STAT_CIRCLE;
       break;
     default:
-      DBGp_COM(1,"ERR prg=> char not recognized: %c\n", com_data[4]);
+      DBGp_ERR(1,"ERR prg=> char not recognized: %c\n", com_data[4]);
     }
     ReInitDynVars();
   }
@@ -153,7 +153,7 @@ void COMprocess(){
       led_on();  
       break;
     default:
-      DBGp_COM(1,"ERR tri=> char not recognized: %c\n", com_data[4]);
+      DBGp_ERR(1,"ERR tri=> char not recognized: %c\n", com_data[4]);
     }
   }
 

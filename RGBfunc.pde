@@ -33,7 +33,6 @@ void LedInitTest() {
   led_blue();
   delay(DELAY_INIT_TEST_ON);
   led_off();
-  //delay(DELAY_INIT_TEST_OFF);
 }
 
 /*! Dopo che i valori da scrivere sul led vengono "appoggiati" nelle variabili r, g, b; 
@@ -42,11 +41,11 @@ void LedInitTest() {
 void rgb() {
   /*!  <b> Operazioni eseguite dalla funzione: </b>  */
   /*!  - Scrittura fisica dei valori di PWM da applicare ai pin
-   \arg Scrittura RED_PIN  */
+   \arg Scrittura var::RED_PIN  */
   analogWrite(RED_PIN,r);
-  /*!  \arg Scrittura GREEN_PIN  */
+  /*!  \arg Scrittura var::GREEN_PIN  */
   analogWrite(GREEN_PIN,g);
-  /*!  \arg Scrittura BLUE_PIN  */
+  /*!  \arg Scrittura var::BLUE_PIN  */
   analogWrite(BLUE_PIN,b);
 
 }
@@ -84,7 +83,7 @@ void RGBrandom(){
 
 //! Passaggio rapido dei colori in modalita' RANDOM
 /*! Flash random nei colori primari (R-G-B)  */
-void RGBflash(){
+void RGBflash_old(){
   switch(DYNcolor){
   case DYN_COL_RED:
     r = 255;
@@ -97,6 +96,36 @@ void RGBflash(){
   case DYN_COL_BLUE:
     b = 255;
     if(b == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_INIT:
+  case DYN_COL_OFF:
+    r = 0;
+    g = 0;
+    b = 0;
+    randomSeed(analogRead(6));
+    DYNcolor = random(1, (DYN_COL_MAX+1) );
+    break;
+  case DYN_COL_ERR:
+    break;
+  }
+  rgb();
+}
+
+//! Passaggio rapido dei colori in modalita' RANDOM
+/*! Flash random nei colori primari (R-G-B)  */
+void RGBflash(){
+  switch(DYNcolor){
+  case DYN_COL_RED:
+    r = max_pwm;
+    DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_GREEN:
+    g = max_pwm;
+    DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_BLUE:
+    b = max_pwm;
+    DYNcolor = DYN_COL_OFF;
     break;
   case DYN_COL_INIT:
   case DYN_COL_OFF:

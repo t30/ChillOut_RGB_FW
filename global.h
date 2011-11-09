@@ -23,10 +23,10 @@
 #define MAX_STATUS 5
 /*!  Da tenere presente che sebbene lo stato 0 indichi il LED spento.
  Anche lo 0 e' uno stato a tutti gli effetti  */
-#define STAT_OFF       0x00    //!<  0 = off                    @todo  Non ancora usata 
-#define STAT_STATIC    0x01    //!<  1 = static color           @todo  Non ancora usata 
-#define STAT_RAND      0x02    //!<  2 = rand_col function      @todo  Usata in parte 
-#define STAT_FLASH     0x03    //!<  3 = flash function         @todo  Usata in parte
+#define STAT_OFF       0x00    //!<  0 = off                  
+#define STAT_STATIC    0x01    //!<  1 = static color          
+#define STAT_RAND      0x02    //!<  2 = rand_col function      
+#define STAT_FLASH     0x03    //!<  3 = flash function       
 #define STAT_UFO       0x04    //!<  4 = ufo function
 #define STAT_CIRCLE    0x05    //!<  5 = Circle function !! Synchronized func
 
