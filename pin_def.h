@@ -12,7 +12,9 @@
 /*! Sul pin13 della scheda, dove spesso e' gia' connesso un led
 NON e'possibile collegarsi, in quanto usato dal chip ethernet.
 */
-#define STATUS_PIN 13
+#define STATUS_PIN 7
+#define ENABLE_PIN 8
+
 //!< @param MCU pin
 
 //pinout PCB
