@@ -1,4 +1,4 @@
-/*! @file TSK2slow.pde
+/*! @file TSK2slow.ino
  Routine lanciata da loop(). E' eseguita ogni var::slowPeriod ms (all'incirca).\n
  @author Ing. M.Lampugnani
  @par Company:
@@ -7,6 +7,9 @@
  @date 21th October 2011 */
 
 void TSKslow(){
-    DBGp_STAT(5,"Actual RGB state - r: %u g: %u b: %u => com_data: %s \n", r, g, b, com_data); 	
+  //blinkEnable();
+  DBGp_STAT(5,"Actual RGB state - r: %u g: %u b: %u => com_data: %s \n", r, g, b, com_data); 	
+  //blinkEnable();
 }
+
 

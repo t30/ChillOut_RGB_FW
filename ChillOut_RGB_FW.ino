@@ -1,4 +1,4 @@
-/*! @file ChillOut_RGB_FW.pde
+/*! @file ChillOut_RGB_FW.ino
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
@@ -6,11 +6,11 @@
  @date 21th October 2011 */
 
 #if defined __AVR_ATmega168__ || defined __AVR_ATmega328P__
-  #define CHIP_328
+#define CHIP_328
 #endif
 
 #if defined __AVR_ATmega1280__
-  #define CHIP_1280
+#define CHIP_1280
 #endif
 
 #include <Metro.h>
@@ -24,21 +24,22 @@
 void setup() {
 
   blinkStatus();		
+  blinkEnable(1);
 
   Serial.begin(COM_BPS); 
   //Serial.println("Booting up..");
   DBGp_SETUP(0,"ChillOUT RGB Controller FW %s\n",FW_VER);
-  
+
   RGBinit();
   RFinit();
-	
+
   RFsetup();
 
   LedInitTest();
 
   DBGp_SETUP(5,"Ready!!\n",FW_VER);
   //Serial.println("Ready!!");
-
+  blinkEnable(0);
 }
 
 void loop() {
@@ -63,3 +64,5 @@ void loop() {
   }
 
 }
+
+

@@ -1,4 +1,4 @@
-/*! @file COM_PS.pde
+/*! @file COM_PS.ino
 Function for Serial Port connection (incoming cmd).
  @author Ing. M.Lampugnani
  @par Company:

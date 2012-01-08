@@ -1,4 +1,4 @@
-/*! @file COM_Base.pde
+/*! @file COM_Base.ino
  This file contain the function need to processing data from all kind of comunication protocol.\n
  All data was put by adhoc function in data_com array.\n
  With the content of this file let's process it!
@@ -114,7 +114,7 @@ void COMprocess(){
 
   //Set new full RGB color
   if(com_data[0] == 'r' && com_data[1] == 'g' && com_data[2] == 'b'){
-    system_stat = 1;
+    system_stat = STAT_STATIC;
     r = HEXtoRGB(com_data[4],com_data[5]);
     g = HEXtoRGB(com_data[6],com_data[7]);
     b = HEXtoRGB(com_data[8],com_data[9]);
@@ -137,7 +137,7 @@ void COMprocess(){
 
   //Set pure color
   if(com_data[0] == 't' && com_data[1] == 'r' && com_data[2] == 'i'){
-    system_stat = 1;
+    system_stat = STAT_STATIC;
     DBGp_COM(0,"tricolor=> set: %c\n", com_data[4]);
     switch(com_data[4]){
     case'r':      

@@ -8,7 +8,7 @@
 #define	GLOBAL_H
 
 //! Versione Firmware
-#define FW_VER  "0.002"
+#define FW_VER  "0.003"
 //! BPS comunicazione seriale
 #define COM_BPS 9600
 

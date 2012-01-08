@@ -1,4 +1,4 @@
-/*! @file COM_RF.pde
+/*! @file COM_RF.ino
 Function for Serial Port connection (incoming cmd).
  @author Ing. M.Lampugnani
  @par Company:

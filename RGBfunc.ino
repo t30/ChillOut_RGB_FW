@@ -1,4 +1,4 @@
-/*! @file RGBfunc.h
+/*! @file RGBfunc.ino
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany

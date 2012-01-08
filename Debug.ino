@@ -1,4 +1,4 @@
-/*! @file Debug.pde
+/*! @file Debug.ino
  This file contain all the function and all the definition about debug.\n
  @author Ing. M.Lampugnani
  @par Company:

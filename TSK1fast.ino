@@ -1,4 +1,4 @@
-/*! @file TSK1fast.pde
+/*! @file TSK1fast.ino
  Routine lanciata da loop(). E' eseguita ogni var::fastPeriod ms (all'incirca).\n
  @author Ing. M.Lampugnani
  @par Company:
@@ -8,18 +8,20 @@
 
 void TSKfast(){
   blinkStatus();
-    switch(system_stat){
-    case STAT_RAND:
-      RGBrandom();
-      break;
-    case STAT_FLASH:
-      RGBflash();
-      break;
-    case STAT_UFO:
-      RGBufo();
-      break;
-    case STAT_CIRCLE:
-      RGBcircle();
-      break;
-    }
+  switch(system_stat){
+  case STAT_RAND:
+//    blinkStatus();
+    RGBrandom();
+    break;
+  case STAT_FLASH:
+    RGBflash();
+    break;
+  case STAT_UFO:
+    RGBufo();
+    break;
+  case STAT_CIRCLE:
+    RGBcircle();
+    break;
+  }
 }
+

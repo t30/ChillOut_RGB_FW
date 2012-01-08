@@ -1,4 +1,4 @@
-/*! @file TSK3log.pde
+/*! @file TSK3log.ino
  Routine lanciata da loop(). E' eseguita ogni var::slowPeriod ms (all'incirca).\n
  Function of this file is log your data.\n
  You can chose data to log and protocol used to remote logging.

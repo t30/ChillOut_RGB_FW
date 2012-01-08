@@ -1,6 +1,4 @@
-/*! @file Debug.h
- The definition are used to call the main funcion limited to its contest.\n
- Commenting definition you should disable debug.\n
+/*! @file RGBfunc.h
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
