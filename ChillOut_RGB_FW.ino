@@ -37,6 +37,8 @@ void setup() {
 
   LedInitTest();
 
+  randomSeed(analogRead(RANDOM_PIN));
+
   DBGp_SETUP(5,"Ready!!\n",FW_VER);
   //Serial.println("Ready!!");
   blinkEnable(0);
@@ -64,5 +66,6 @@ void loop() {
   }
 
 }
+
 
 

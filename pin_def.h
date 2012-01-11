@@ -17,6 +17,9 @@ NON e'possibile collegarsi, in quanto usato dal chip ethernet.
 
 //!< @param MCU pin
 
+
+#define RANDOM_PIN A5 // analog pin 5 - digital pin9
+
 //pinout PCB
 /*! @name INPUT IR/RF PinOut
  Defenizione delle connessioni dell IR/RF Receiver all MCU

@@ -8,6 +8,8 @@
  @version 0.0.1-RF brach
  @date 21th October 2011 */
 
- void TSKlog(){
-        DBGp_STAT(1,"TSKlog => log to remote system\n", com_data[4]);
+void TSKlog(){
+  randomSeed(analogRead(RANDOM_PIN));
+  DBGp_STAT(1,"TSKlog => log to remote system\n", com_data[4]);
 }
+

@@ -10,7 +10,7 @@ void TSKfast(){
   blinkStatus();
   switch(system_stat){
   case STAT_RAND:
-//    blinkStatus();
+    //    blinkStatus();
     RGBrandom();
     break;
   case STAT_FLASH:
@@ -24,4 +24,5 @@ void TSKfast(){
     break;
   }
 }
+
 

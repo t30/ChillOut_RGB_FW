@@ -17,7 +17,7 @@ void RGBinit(){
   /*! \arg Settaggio var::BLUE_PIN */
   pinMode(BLUE_PIN, OUTPUT);
 }
-  
+
 /*! Funzione che emette tre lampeggi da 200ms dei tre colori principali del led*/
 //! Funzione di test LED RGB
 void LedInitTest() {
@@ -53,6 +53,51 @@ void rgb() {
 //! Passaggio dal colore attuale ad uno RANDOM
 /*! Con sfumatura nei colori intermedi  */
 void RGBrandom(){
+  switch(DYNcolor){
+  case DYN_COL_RED:
+    if(r < DESTvalue)  r++;
+    if(r > DESTvalue)  r--;
+    if(r == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_GREEN:
+    if(g < DESTvalue)  g++;
+    if(g > DESTvalue)  g--;
+    if(g == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_BLUE:
+    if(b < DESTvalue)  b++;
+    if(b > DESTvalue)  b--;
+    if(b == DESTvalue) DYNcolor = DYN_COL_OFF;
+    break;
+  case DYN_COL_INIT:
+  case DYN_COL_OFF:
+    if(r + g + b > 510){ //! @todo non sarebbe meglio mettere come soglia max_pwm*2??
+      if(r > g && r > b){
+        DYNcolor = DYN_COL_RED;
+        DESTvalue = 0;
+      }
+      else if(g > r && g > b){
+        DYNcolor = DYN_COL_GREEN;
+        DESTvalue = 0;
+      }
+      else{ //(b > r && b > g){
+        DYNcolor = DYN_COL_BLUE;
+        DESTvalue = 0;
+      }
+    }
+    else{
+      DYNcolor = random(1, (DYN_COL_MAX+1) );
+      DESTvalue = random(0,max_pwm);
+    }
+    break;
+  case DYN_COL_ERR:
+    break;
+  }
+  rgb();
+}
+//! Passaggio dal colore attuale ad uno RANDOM
+/*! Con sfumatura nei colori intermedi  */
+void RGBrandom_old(){
   switch(DYNcolor){
   case DYN_COL_RED:
     if(r < DESTvalue)  r++;
@@ -132,7 +177,7 @@ void RGBflash(){
     r = 0;
     g = 0;
     b = 0;
-    randomSeed(analogRead(6));
+    //randomSeed(analogRead(6));
     DYNcolor = random(1, (DYN_COL_MAX+1) );
     break;
   case DYN_COL_ERR:
@@ -234,6 +279,9 @@ void RGBcircle(){
   }
   rgb();
 }
+
+
+
 
 
 
