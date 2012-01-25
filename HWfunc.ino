@@ -37,6 +37,23 @@ void blinkAll(){
   blinkEnable();
 }
 
+void chkSHUTdn(){
+  if(tickTIMER == 1){      //! Shutdown light --> go to define::STAT_OFF
+    led_off();
+    tickTIMER--;
+    system_stat = STAT_OFF;
+    DBGp_STAT(0,"Programmed ShutDown Now\n", tickTIMER);
+  }
+  else if(tickTIMER > 1){  //! Decrease the value count
+    tickTIMER--;
+    DBGp_STAT(2,"Again %u tick to ShutDown\n", tickTIMER);
+  }
+  else{                    //! Do nothing
+
+  }
+
+}
+
 
 
 

@@ -9,7 +9,12 @@
  @date 21th October 2011 */
 
 void TSKlog(){
-  randomSeed(analogRead(RANDOM_PIN));
+
+  chkSHUTdn();
+
+  //randomSeed(analogRead(RANDOM_PIN));
   DBGp_STAT(1,"TSKlog => log to remote system\n", com_data[4]);
 }
+
+
 

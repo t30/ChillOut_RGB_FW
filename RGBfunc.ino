@@ -79,13 +79,14 @@ void RGBrandom(){
       else if(g > r && g > b){
         DYNcolor = DYN_COL_GREEN;
         DESTvalue = 0;
-      }
+      } //! @todo questo else alla fine fa si che il blu capiti molto meno spesso... RIVEDERE
       else{ //(b > r && b > g){
         DYNcolor = DYN_COL_BLUE;
         DESTvalue = 0;
       }
     }
     else{
+      randomSeed(analogRead(RANDOM_PIN));
       DYNcolor = random(1, (DYN_COL_MAX+1) );
       DESTvalue = random(0,max_pwm);
     }
@@ -177,7 +178,7 @@ void RGBflash(){
     r = 0;
     g = 0;
     b = 0;
-    //randomSeed(analogRead(6));
+    randomSeed(analogRead(RANDOM_PIN));
     DYNcolor = random(1, (DYN_COL_MAX+1) );
     break;
   case DYN_COL_ERR:
@@ -230,6 +231,7 @@ void RGBufo(){
     if(g>r && g>b)    DYNcolor=DYN_COL_GREEN;
     if(b>g && b>r)    DYNcolor=DYN_COL_BLUE;
     if(r==g && r==b)  DYNcolor=DYN_COL_WHITE;
+    randomSeed(analogRead(RANDOM_PIN));
     DESTvalue = random(1,max_pwm);
     break;
   case DYN_COL_ERR:

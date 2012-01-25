@@ -26,7 +26,7 @@ int HEXcharTOint(char base){
 int HEXtoRGB(char first,char second){
   int final = 0;
   char value[]={
-    second, first                           };
+    second, first                                   };
   for(int i = 0; i < 2; i++){
     final = final + ( HEXcharTOint(value[i]) << (4*i) ); 
   }
@@ -37,7 +37,7 @@ int HEXtoRGB(char first,char second){
 unsigned long HEXtoPeriod(char first,char second, char third){
   int final = 0;
   char value[]={
-    third, second, first         };
+    third, second, first                 };
   for(int i = 0; i < 3; i++){
     final = final + ( HEXcharTOint(value[i]) << (4*i) ); 
   }
@@ -133,6 +133,15 @@ void COMprocess(){
       led_off();
       system_stat = STAT_OFF;
     }
+    if(com_data[4] == 'T') {
+      tickTIMER = HEXcharTOint(com_data[5]);
+      DBGp_COM(0,"AutoPOWERoff next ticks: %u\n", tickTIMER);
+    }
+    if(com_data[4] == 'R') {
+      DBGp_COM(0,"Reset Requested...\n", tickTIMER);
+      void(* resetFunc) (void) = 0; //declare reset function @ address 0
+      resetFunc();  //call reset
+    }
   }
 
   //Set pure color
@@ -159,4 +168,8 @@ void COMprocess(){
 
   //strcpy(com_data,"000000000");
 }
+
+
+
+
 

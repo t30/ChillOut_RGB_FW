@@ -96,6 +96,8 @@ void ReInitDynVars(){
 }
 //@}
 
+
+unsigned int tickTIMER = 0;    //! Varibile per l'autospegnimento
 #endif
 
 

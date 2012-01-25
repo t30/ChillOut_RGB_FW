@@ -33,9 +33,16 @@ NON e'possibile collegarsi, in quanto usato dal chip ethernet.
 
 #ifdef CHIP_328
 // 433 RF MODULE
+#ifdef PROTO
+#define GND_PIN 16        //!< Pin di massa - OUTPUT
+#define VCC_PIN 14        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
+#define RECV_PIN 15       //!< Pin di ricezione dati - INPUT
+#else
 #define GND_PIN 17        //!< Pin di massa - OUTPUT
 #define VCC_PIN 14        //!< Pin di alimentazione (5V; 20mA - 40mA MAX) - OUTPUT
 #define RECV_PIN 16       //!< Pin di ricezione dati - INPUT
+#endif
+
 #endif
 
 //ARDUINO TEST
