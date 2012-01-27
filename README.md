@@ -11,21 +11,20 @@ http://blog.lampugnani.org/arduino/chillout-rgb-ambient-lamp/
 
 RF branch
 =========
-this brach enable, with right hardware, to receive command through
+This brach will enable, with right hardware, to receive command through
 RF board.
 
-You will need:
+Cooking List:
 --------------
-* Of course, an arduino or a dedicated device.
-* An RGB led.
-
-  if you use a 20mA/channel RGB led, you only need a led and 3 limiter resistor
-  
-  otherwise you will need a led and suitable power controller.
-  
-* Arduino IDE.
+* Of course, an arduino or a dedicated device (like ChillOut RGB - (it) http://blog.lampugnani.org/project/chillout-rgb-new-pcb/).
+* An RGB led (suitable for your driver).
+	if you use a 20mA/channel RGB led, you only need a led and 3 limiter resistor
+	otherwise you will need a led and suitable power controller.
+* Arduino IDE.(you may need to add wirig.c in your tree folder)
 * Processing IDE (optional).
-* Metro lib.
+	Using a terminal emulator (like HiperTerminal,putty (win) and minicom (linux))
+	you are able to send and receive command.
+* Metro lib. (you may need to edit some line of code)
 * VirtualWire lib.
 
 
