@@ -8,6 +8,8 @@
 
 void TSKfast(){
   blinkStatus();
+  //blinkAll();
+  //blinkEnable();
   switch(system_stat){
   case STAT_RAND:
     //    blinkStatus();

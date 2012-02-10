@@ -26,7 +26,7 @@ int HEXcharTOint(char base){
 int HEXtoRGB(char first,char second){
   int final = 0;
   char value[]={
-    second, first                                   };
+    second, first                                           };
   for(int i = 0; i < 2; i++){
     final = final + ( HEXcharTOint(value[i]) << (4*i) ); 
   }
@@ -37,7 +37,7 @@ int HEXtoRGB(char first,char second){
 unsigned long HEXtoPeriod(char first,char second, char third){
   int final = 0;
   char value[]={
-    third, second, first                 };
+    third, second, first                         };
   for(int i = 0; i < 3; i++){
     final = final + ( HEXcharTOint(value[i]) << (4*i) ); 
   }
@@ -135,6 +135,12 @@ void COMprocess(){
     }
     if(com_data[4] == 'T') {
       tickTIMER = HEXcharTOint(com_data[5]);
+      if(tickTIMER>0){
+        blinkEnable(1);
+      }
+      else{
+        blinkEnable(0);
+      }
       DBGp_COM(0,"AutoPOWERoff next ticks: %u\n", tickTIMER);
     }
     if(com_data[4] == 'R') {
@@ -168,6 +174,10 @@ void COMprocess(){
 
   //strcpy(com_data,"000000000");
 }
+
+
+
+
 
 
 

@@ -25,24 +25,27 @@
 
 void setup() {
 
-  blinkStatus();		
+  initStatus();
+  initEnable();
+
   blinkEnable(1);
+  blinkStatus();		
 
   Serial.begin(COM_BPS); 
+
   //Serial.println("Booting up..");
-  DBGp_SETUP(0,"ChillOUT RGB Controller FW %s\n",FW_VER);
+  DBGp_SETUP(0,"ChillOUT RGB Controller FW %s\n",FW_VER_STRING);
 
   RGBinit();
   RFinit();
-
   RFsetup();
-
   LedInitTest();
 
   randomSeed(analogRead(RANDOM_PIN));
 
-  DBGp_SETUP(5,"Ready!!\n",FW_VER);
+  DBGp_SETUP(5,"Ready!!\n",FW_VER_STRING);
   //Serial.println("Ready!!");
+
   blinkEnable(0);
 }
 
@@ -68,6 +71,7 @@ void loop() {
   }
 
 }
+
 
 
 
