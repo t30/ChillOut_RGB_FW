@@ -33,9 +33,3 @@ void p(unsigned int lvlDBG, char *fmt, ... ){
   }
 }
 
-
-
-
-
-
-

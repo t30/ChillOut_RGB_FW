@@ -31,7 +31,5 @@ extern unsigned int debugL; // = DEBUG;
 
 extern void p(unsigned int lvlDBG, char *fmt, ... );
 
-
-
 #endif
 
