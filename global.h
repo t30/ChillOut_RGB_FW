@@ -7,12 +7,17 @@
 #ifndef	GLOBAL_H
 #define	GLOBAL_H
 
+/*! @name  Firmware and Hardware 
+ Definizioni di versioni.\n
+ Velocita' e tipi di comunicazione.\n
+ */
+//@{
 //! Versione Firmware
-#define FW_VER_STRING  "0.003"
-#define FW_VER 0003
+#define FW_VER_STRING  "0.004"
+#define FW_VER 0004
 //! BPS comunicazione seriale
 #define COM_BPS 9600
-
+//@}
 
 /*! @name  State 
  Variabili e definizioni utilizzate per la gestione degli stati del sistema.  */
@@ -35,6 +40,13 @@
 /*!  Da tenere presente che il valore con cui vuene settata in fase di dichiarazione,
      sara' il valore assegnato in fase di avvio del dispositivo.*/
 int system_stat = STAT_OFF; //!< La variabile dovra' assumere solo valori predefiniti dalle define STAT_*
+
+//! Device identification
+/*!   @param [0-254]  */
+unsigned int dev_Id = 1; // 1 - 254
+//! Group identification
+/*!   @param [0-15]  */
+unsigned int dev_Ig = 1; // 0 - 15
 
 //@}
 
@@ -59,15 +71,18 @@ unsigned int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-255); c
 //@{
 
 //! Array da 11 colonne in cui viene appoggiato il comando proveniente dalla seriale/RF
-/*! Le prime 3 posizioni sono il comando
- //  La quarta no è usata
+/*! Le prime 3 posizioni sono il comando\n
+ //  La quarta no è usata\n
  //  sette posizioni usate per l'agomento piu' terminatore */
 char com_data[] = {
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  //!<  @todo verificare perche' devo usare un elemento in piu' nell'array
 //diversamente da come fatto nella versione IR
 
-unsigned int dev_Id = 1; // 1 - 254
-unsigned int dev_Ig = 1; // 0 - 15
+//! Array di parcheggio dati RF Gruppo e Dispositivo
+/*! La posizione zero contiene il dato del gruppo (15 possibili).\n
+    La posizione uno e due contiene i dati del dispositivo (1-254; 0 nessuno - 255 broadcast).\n
+    La matrice contiene valori esadecimali.
+*/
 char com_Id[] = {0, 0, 0};
 //char com_Ig = '0';
 
@@ -77,7 +92,7 @@ int incomingByte = 0;
 //@}
 
 
-/*!  @name  Dynamic Color function 
+/*!  @name  Dynamic Color var and def. 
  Variabili e definizioni utilizzate per la gestione delle funzioni dinamiche del sistema.  */
 //@{
 
@@ -95,15 +110,16 @@ int incomingByte = 0;
 
 int DYNcolor = DYN_COL_OFF;   //!< La variabile dovra' assumere solo valori predefiniti dalle define DYN_COL_*
 int DESTvalue = DYN_DEST_OFF; //!< La variabile dovra' assumere solo valori compresi fra 0 e max_pwm
+//@}
 
+//! Dyn color reinit var
 void ReInitDynVars(){
   DYNcolor = DYN_COL_INIT;
   DESTvalue = DYN_DEST_OFF;  //!< @todo non dovrebbe essere necessario riinizializzarla
 }
-//@}
 
-
-unsigned int tickTIMER = 0;    //! Varibile per l'autospegnimento
+//! Varibile per l'autospegnimento
+unsigned int tickTIMER = 0;    
 #endif
 
 

@@ -26,7 +26,7 @@ int HEXcharTOint(char base){
 int HEXtoRGB(char first,char second){
   int final = 0;
   char value[]={
-    second, first                                             };
+    second, first };
   for(int i = 0; i < 2; i++){
     final = final + ( HEXcharTOint(value[i]) << (4*i) ); 
   }
@@ -37,7 +37,7 @@ int HEXtoRGB(char first,char second){
 unsigned long HEXtoPeriod(char first,char second, char third){
   int final = 0;
   char value[]={
-    third, second, first                           };
+    third, second, first };
   for(int i = 0; i < 3; i++){
     final = final + ( HEXcharTOint(value[i]) << (4*i) ); 
   }

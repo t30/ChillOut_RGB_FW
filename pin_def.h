@@ -8,11 +8,12 @@
 #ifndef	PIN_DEF_H
 #define	PIN_DEF_H
 
-//! Pin di segnalazione POWER On/Off.
+//! Pin di segnalazione Status.
 /*! Sul pin13 della scheda, dove spesso e' gia' connesso un led
 NON e'possibile collegarsi, in quanto usato dal chip ethernet.
 */
 #define STATUS_PIN 7
+//! Pin di segnalazione Enable.
 #define ENABLE_PIN 8
 
 //!< @param MCU pin
