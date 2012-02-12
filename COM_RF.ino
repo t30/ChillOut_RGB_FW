@@ -12,8 +12,6 @@ void RFprocess(){
   //strcpy(com_data,"000000000");
   if ( vw_get_message(buf, &buflen) ){
     DBGp_RF(8,"buflen: %u buf:%s\n",VW_MAX_MESSAGE_LEN,buf);
-    //if ( vw_get_message((uint8_t* )com_data, (uint8_t* ) strlen(com_data)) ){
-    //for (int i = 0; i < buflen; i++){
       
     // // //for (int i = 0; i < 10; i++){
     // // //  com_data[i] = (char)buf[i];
