@@ -21,7 +21,7 @@
 #define DBGp_RF(lvlDBG, fmt, ... )                   DBGp(lvlDBG, fmt, __VA_ARGS__ )
 
 //!  Definition of  default level debug
-#define DEBUG  5
+#define DEBUG  9
 
 //!  Actual system level debug
 /*!  This can be changed on the fly using serial command.\n

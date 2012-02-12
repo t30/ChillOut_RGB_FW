@@ -26,7 +26,7 @@ int HEXcharTOint(char base){
 int HEXtoRGB(char first,char second){
   int final = 0;
   char value[]={
-    second, first                                           };
+    second, first                                             };
   for(int i = 0; i < 2; i++){
     final = final + ( HEXcharTOint(value[i]) << (4*i) ); 
   }
@@ -37,12 +37,25 @@ int HEXtoRGB(char first,char second){
 unsigned long HEXtoPeriod(char first,char second, char third){
   int final = 0;
   char value[]={
-    third, second, first                         };
+    third, second, first                           };
   for(int i = 0; i < 3; i++){
     final = final + ( HEXcharTOint(value[i]) << (4*i) ); 
   }
   //return constrain(final, 0, 255);
   return final;
+}
+
+bool CheckTarget(char IdDev[3]){
+  if(HEXcharTOint(IdDev[0]) == dev_Ig){
+    return 1; 
+  } 
+  else if(HEXtoRGB(IdDev[1], IdDev[2]) == dev_Id || HEXtoRGB(IdDev[1], IdDev[2]) == 255) {
+    return 1; 
+  } 
+  else {
+    return 0;
+  }
+
 }
 
 //! Processa i dati presenti nel buffer di ricezione
@@ -133,6 +146,10 @@ void COMprocess(){
       led_off();
       system_stat = STAT_OFF;
     }
+    if(com_data[4] == 'D') {
+    dev_Ig = HEXcharTOint(com_data[5]);
+    dev_Id = HEXtoRGB(com_data[6],com_data[7]);
+    }
     if(com_data[4] == 'T') {
       tickTIMER = HEXcharTOint(com_data[5]);
       if(tickTIMER>0){
@@ -174,6 +191,7 @@ void COMprocess(){
 
   //strcpy(com_data,"000000000");
 }
+
 
 
 

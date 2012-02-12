@@ -66,6 +66,11 @@ char com_data[] = {
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};  //!<  @todo verificare perche' devo usare un elemento in piu' nell'array
 //diversamente da come fatto nella versione IR
 
+unsigned int dev_Id = 1; // 1 - 254
+unsigned int dev_Ig = 1; // 0 - 15
+char com_Id[] = {0, 0, 0};
+//char com_Ig = '0';
+
 //! Variabile di parcheggio per l'ultimo byte arrivato dalla porta seriale
 int incomingByte = 0;
 
