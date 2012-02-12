@@ -1,4 +1,4 @@
-ChillOut_RGB ambient lamp project
+ChillOut_RGB ambient lamp project v0.003
 =================================
 Chillout RGB is a complete project to build a full 16.8M Color
 by yourserf and control it using a Serial Port with its control 
