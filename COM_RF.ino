@@ -6,6 +6,8 @@
  @version 0.0.1-RF brach
  @date 21th October 2011 */
 
+#if defined BUILD_COMM_RF
+
 void RFprocess(){
   uint8_t buf[VW_MAX_MESSAGE_LEN];
   uint8_t buflen = VW_MAX_MESSAGE_LEN;
@@ -80,7 +82,7 @@ void RFinit(){
   DBGp_RF(5,"Dev: %u - Group: %u\n",dev_Id,dev_Ig);
 }
 
-
+#endif
 
 
 

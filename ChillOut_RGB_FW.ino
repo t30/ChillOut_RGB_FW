@@ -6,6 +6,8 @@
  @date 21th October 2011 */
 
 //#define PROTO
+#define BUILD_COMM_I2C
+//#define BUILD_COMM_RF
 
 #if defined __AVR_ATmega168__ || defined __AVR_ATmega328P__
 #define CHIP_328
@@ -16,13 +18,19 @@
 #endif
 
 #include <Metro.h>
+#if defined BUILD_COMM_RF
 #include <VirtualWire.h>
+#endif
+#if defined BUILD_COMM_I2C
+#include <Wire.h>
+#endif
 #include "pin_def.h"
 #include "global.h"
 #include "timing.h"
 #include "Debug.h"
 #include "RGBfunc.h"
-#include "Wire.h"
+//#include "Wire.h"
+
 
 void setup() {
 
@@ -38,8 +46,16 @@ void setup() {
   DBGp_SETUP(0,"ChillOUT RGB Controller FW %s\n",FW_VER_STRING);
 
   RGBinit();
+
+#if defined BUILD_COMM_RF
   RFinit();
   RFsetup();
+#endif
+
+#if defined BUILD_COMM_I2C
+  I2Csetup();
+#endif
+
   LedInitTest();
 
   randomSeed(analogRead(RANDOM_PIN));
@@ -58,7 +74,11 @@ void loop() {
   } 
   else {
     PSprocess();
+
+#if defined BUILD_COMM_RF
     RFprocess();
+#endif
+
   }
 
   if (SlowTask.check() == 1) {
@@ -72,6 +92,9 @@ void loop() {
   }
 
 }
+
+
+
 
 
 

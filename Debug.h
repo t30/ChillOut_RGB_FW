@@ -19,6 +19,7 @@
 #define DBGp_COM(lvlDBG, fmt, ... )                  DBGp(lvlDBG, fmt, __VA_ARGS__ )
 #define DBGp_PS(lvlDBG, fmt, ... )                   DBGp(lvlDBG, fmt, __VA_ARGS__ )
 #define DBGp_RF(lvlDBG, fmt, ... )                   DBGp(lvlDBG, fmt, __VA_ARGS__ )
+#define DBGp_I2C(lvlDBG, fmt, ... )                   DBGp(lvlDBG, fmt, __VA_ARGS__ )
 
 //!  Definition of  default level debug
 #define DEBUG  9
