@@ -1,5 +1,5 @@
 /*! @file COM_RF.ino
- Function for Serial Port connection (incoming cmd).
+ Function for RF connection (incoming cmd).
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
