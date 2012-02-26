@@ -13,7 +13,7 @@
  */
 //@{
 //! Versione Firmware
-#define FW_VER_STRING  "0.004"
+#define FW_VER_STRING  "0.004-I2C"
 #define FW_VER 0004
 //! BPS comunicazione seriale
 #define COM_BPS 9600
