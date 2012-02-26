@@ -19,13 +19,11 @@ void initEnable(){
 /*!  Connected to pin def::STATUS_PIN */
 void blinkStatus(){
   digitalWrite( STATUS_PIN,!digitalRead(STATUS_PIN) );
-  //digitalWrite( ENABLE_PIN,!digitalRead(ENABLE_PIN) );
 }
 
 //! Blinking led ENABLE
 /*!  Connected to pin def::ENABLE_PIN */
 void blinkEnable(){
-  //digitalWrite( STATUS_PIN,!digitalRead(STATUS_PIN) );
   digitalWrite( ENABLE_PIN,!digitalRead(ENABLE_PIN) );
 }
 

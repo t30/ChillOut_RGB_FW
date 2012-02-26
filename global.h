@@ -83,6 +83,10 @@ char com_data[] = {
     La posizione uno e due contiene i dati del dispositivo (1-254; 0 nessuno - 255 broadcast).\n
     La matrice contiene valori esadecimali.
 */
+
+//! Array da 3 colonne in cui viene appoggiato il gruppo e il dispositivo di destinazione settato via RF
+/*! La prima posizione è il gruppo\n
+ //  la seconda e la terza sono il dispositivo\n */
 char com_Id[] = {0, 0, 0};
 //char com_Ig = '0';
 
