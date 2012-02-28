@@ -7,12 +7,12 @@
 
 //! Init LED status (GREEN)
 void initStatus(){
-  pinMode(OUTPUT, STATUS_PIN);
+  pinMode(STATUS_PIN,OUTPUT);
 }
 
 //! Init LED ENABLE (YELLOW)
 void initEnable(){
-  pinMode(OUTPUT, ENABLE_PIN);
+  pinMode(ENABLE_PIN,OUTPUT);
 }
 
 //! Blinking led Status.
