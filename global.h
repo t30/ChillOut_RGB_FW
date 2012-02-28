@@ -132,7 +132,11 @@ unsigned int tickTIMER = 0;
 //###################################################################################
 #ifdef  BUILD_COMM_I2C
 
-#define I2C_NODE          10
+#define I2C_NODE          4
+
+//I2C Status Word
+//bit0 = B0000000X =>  There's new data?
+char I2CSW;
 
 #endif
 //###################################################################################

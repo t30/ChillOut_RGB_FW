@@ -79,6 +79,10 @@ void loop() {
     RFprocess();
 #endif
 
+#if defined BUILD_COMM_I2C
+    I2Cprocess();
+#endif
+
   }
 
   if (SlowTask.check() == 1) {
