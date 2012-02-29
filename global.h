@@ -43,7 +43,7 @@ int system_stat = STAT_OFF; //!< La variabile dovra' assumere solo valori predef
 
 //! Device identification
 /*!   @param [0-254]  */
-unsigned int dev_Id = 1; // 1 - 254
+unsigned int dev_Id = 2; // 1 - 254
 //! Group identification
 /*!   @param [0-15]  */
 unsigned int dev_Ig = 1; // 0 - 15

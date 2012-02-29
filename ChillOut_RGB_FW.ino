@@ -5,7 +5,7 @@
  @version 0.0.1-RF brach
  @date 21th October 2011 */
 
-#define PROTO
+//#define PROTO
 
 #if defined __AVR_ATmega168__ || defined __AVR_ATmega328P__
 #define CHIP_328
