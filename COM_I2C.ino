@@ -1,5 +1,5 @@
 /*! @file COM_I2C.ino
- Function for I2C connection (incoming cmd - Slave mode).
+Function for I2C connection (incoming cmd - Slave mode).
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
