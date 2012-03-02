@@ -8,6 +8,7 @@
 #define Winc         r++;g++;b++;
 #define Wdec         r--;g--;b--;
 
+//! Init RGB LED
 void RGBinit(){
   /*!  - Settaggio dei pin di OUTPUT  
    \arg Settaggio var::RED_PIN  */
@@ -90,66 +91,6 @@ void RGBrandom(){
       DYNcolor = random(1, (DYN_COL_MAX+1) );
       DESTvalue = random(0,max_pwm);
     }
-    break;
-  case DYN_COL_ERR:
-    break;
-  }
-  rgb();
-}
-//! Passaggio dal colore attuale ad uno RANDOM
-/*! Con sfumatura nei colori intermedi  */
-void RGBrandom_old(){
-  switch(DYNcolor){
-  case DYN_COL_RED:
-    if(r < DESTvalue)  r++;
-    if(r > DESTvalue)  r--;
-    if(r == DESTvalue) DYNcolor = DYN_COL_OFF;
-    break;
-  case DYN_COL_GREEN:
-    if(g < DESTvalue)  g++;
-    if(g > DESTvalue)  g--;
-    if(g == DESTvalue) DYNcolor = DYN_COL_OFF;
-    break;
-  case DYN_COL_BLUE:
-    if(b < DESTvalue)  b++;
-    if(b > DESTvalue)  b--;
-    if(b == DESTvalue) DYNcolor = DYN_COL_OFF;
-    break;
-  case DYN_COL_INIT:
-  case DYN_COL_OFF:
-    randomSeed(analogRead(6));
-    DYNcolor = random(1, (DYN_COL_MAX+1) );
-    DESTvalue = random(0,max_pwm);
-    break;
-  case DYN_COL_ERR:
-    break;
-  }
-  rgb();
-}
-
-//! Passaggio rapido dei colori in modalita' RANDOM
-/*! Flash random nei colori primari (R-G-B)  */
-void RGBflash_old(){
-  switch(DYNcolor){
-  case DYN_COL_RED:
-    r = 255;
-    if(r == DESTvalue) DYNcolor = DYN_COL_OFF;
-    break;
-  case DYN_COL_GREEN:
-    g = 255;
-    if(g == DESTvalue) DYNcolor = DYN_COL_OFF;
-    break;
-  case DYN_COL_BLUE:
-    b = 255;
-    if(b == DESTvalue) DYNcolor = DYN_COL_OFF;
-    break;
-  case DYN_COL_INIT:
-  case DYN_COL_OFF:
-    r = 0;
-    g = 0;
-    b = 0;
-    randomSeed(analogRead(6));
-    DYNcolor = random(1, (DYN_COL_MAX+1) );
     break;
   case DYN_COL_ERR:
     break;

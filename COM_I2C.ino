@@ -1,9 +1,9 @@
 /*! @file COM_I2C.ino
-Function for I2C connection (incoming cmd - Slave mode).
+ Function for I2C connection (incoming cmd - Slave mode).
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany
- @version 0.0.1-RF brach
+ @version 0.0.4
  @date 26th february 2012 */
 
 #if defined BUILD_COMM_I2C
@@ -16,17 +16,12 @@ void I2Cprocess(){
 }
 
 void I2CreceiveEvent(int HowManyByteExpect){
-  //DBGp_I2C(8,"I2C byte: %i \n",HowManyByteExpect);
   unsigned int countPos = 0;
   while(1 <= Wire.available()) // loop through all but the last
   {
     char c = Wire.read(); // receive byte as a character
-    //Serial.print(c);         // print the character
-    //    DBGp_I2C(8,"I2C incByte==> %c\n", c);
-    //DBGp_I2C(8,"I2C count==> %u\n", countPos);
     if(Wire.available()==0){
-      //Serial.println("EOL");
-        bitSet(I2CSW,0);
+      bitSet(I2CSW,0);
     }
     if(countPos < 10) {
       com_data[countPos] = c;
@@ -35,7 +30,6 @@ void I2CreceiveEvent(int HowManyByteExpect){
   }
   com_data[10] = '\0';
   bitSet(I2CSW,0);
-  //COMprocess();
 }
 
 void I2CreceiveEventOLD(int HowManyByteExpect){
@@ -80,6 +74,7 @@ void I2Csetup(){
 }
 
 #endif
+
 
 
 

@@ -29,7 +29,6 @@
 #include "timing.h"
 #include "Debug.h"
 #include "RGBfunc.h"
-//#include "Wire.h"
 
 
 void setup() {
