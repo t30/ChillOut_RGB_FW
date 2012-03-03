@@ -23,6 +23,7 @@ int HEXcharTOint(char base){
   return color;
 }
 
+//!  Converte una coppia di char esadecimali in un integer
 int HEXtoRGB(char first,char second){
   int final = 0;
   char value[]={
@@ -34,6 +35,7 @@ int HEXtoRGB(char first,char second){
   return final;
 }
 
+//!  Converte tre char esadecimali in un unsigned long
 unsigned long HEXtoPeriod(char first,char second, char third){
   int final = 0;
   char value[]={
@@ -45,6 +47,9 @@ unsigned long HEXtoPeriod(char first,char second, char third){
   return final;
 }
 
+//!  Verifica device e gruppo di destinazione del comando
+/*!Per protocolli di comunicazione in broadcast tipo RF o IR.
+*/
 bool CheckTarget(char IdDev[3]){
   if(HEXcharTOint(IdDev[0]) == dev_Ig){
     return 1; 

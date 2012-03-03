@@ -8,6 +8,7 @@ Function for RF connection (incoming cmd).
 
 #if defined BUILD_COMM_RF
 
+//! Process RF data
 void RFprocess(){
   uint8_t buf[VW_MAX_MESSAGE_LEN];
   uint8_t buflen = VW_MAX_MESSAGE_LEN;
@@ -53,15 +54,15 @@ void RFprocess(){
   }
 }
 
-//#ifdef  RF
+//! Setup RF comunication service
 void RFsetup(){
   DBGp_RF(5,"setup RF\n", r);
   vw_set_rx_pin(RECV_PIN);
   vw_setup(RF_BIT_PER_SEC);	   // Bits per sec
   vw_rx_start();                   // Start the receiver PLL running
 }
-//#endif
 
+//! Init RF comunication service
 void RFinit(){
   DBGp_RF(5,"init RF\n", r);
   /*! \arg Settaggio var::GND_PIN */

@@ -1,4 +1,5 @@
 /*! @file RGBfunc.h
+Header file for RGBfunc.ino.\n
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany

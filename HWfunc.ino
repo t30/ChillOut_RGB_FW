@@ -43,6 +43,7 @@ void blinkEnable(char action){
   }
 }
 
+//! Blinking ALL led
 void blinkAll(){
   blinkStatus();
   blinkEnable();

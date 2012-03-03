@@ -1,6 +1,7 @@
 /*! @file Debug.h
- The definition are used to call the main funcion limited to its contest.\n
- Commenting definition you should disable debug.\n
+Header file for Debug.ino.\n
+The definition are used to call the main funcion limited to its contest.\n
+Commenting definition you should disable debug.\n
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany

@@ -4,9 +4,8 @@
  MyCompany
  @version 0.0.1-RF brach
  @date 9th august 2011 */
-
-#ifndef	PIN_DEF_H
-#define	PIN_DEF_H
+#ifndef	PINDEF_H
+#define	PINDEF_H
 
 //! Pin di segnalazione Status.
 /*! Sul pin13 della scheda, dove spesso e' gia' connesso un led

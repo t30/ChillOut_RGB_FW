@@ -1,4 +1,6 @@
 /*! @file global.h
+Dichiarazioni delle variabili globali, incluese nello sketch principale\n
+e disponibili in tutte le funzioni dell'applicativo.
  @author Ing. M.Lampugnani
  @par Company:
  MyCompany 
@@ -19,7 +21,7 @@
 #define COM_BPS 9600
 //@}
 
-/*! @name  State 
+/*! @name  State of device 
  Variabili e definizioni utilizzate per la gestione degli stati del sistema.  */
 //@{
 
@@ -57,17 +59,23 @@ unsigned int dev_Ig = 1; // 0 - 15
   @param [0-255]  */
 //@{
 
+//!  Valore massimo assumibile dai colori (1-255); con 0 non si accenderebbe proprio il led
 /*!  Da tenere presente che anche con valori bassi il led potrebbe non dare segno di vita*/
-unsigned int max_pwm=255;  //!<  Valore massimo assumibile dai colori (1-255); con 0 non si accenderebbe proprio il led
-/*unsigned*/int r=100; //!< Variabile colore Rosso	(Red) - Questa variabile non puo' mai superare il valore di var::max_pwm
-/*unsigned*/int g=100; //!< Variabile colore Verde	(Green) - Questa variabile non puo' mai superare il valore di var::max_pwm
-/*unsigned*/int b=100; //!< Variabile colore Blu	(Blue) - Questa variabile non puo' mai superare il valore di var::max_pwm
+unsigned int max_pwm=255;  
+//! Variabile colore Rosso	
+/*unsigned*/int r=100;/*!<  (Red) - Questa variabile non puo' mai superare il valore di var::max_pwm */
+//! Variabile colore Verde	
+/*unsigned*/int g=100;/*!<  (Green) - Questa variabile non puo' mai superare il valore di var::max_pwm  */
+//! Variabile colore Blu	
+/*unsigned*/int b=100;/*!<  (Blue) - Questa variabile non puo' mai superare il valore di var::max_pwm */
 
 //@}
 
 
-/*! @name Variaibli di appoggio
- Varibili di appoggio utilizzate per la comunicazione seriale e RF (se presente).  */
+/*! @name Variaibli di appoggio comunicazione
+ Varibili di appoggio utilizzate per la comunicazione seriale e RF (se presente). 
+    @param [char] 
+    */
 //@{
 
 //! Array da 11 colonne in cui viene appoggiato il comando proveniente dalla seriale/RF
