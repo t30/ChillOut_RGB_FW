@@ -87,4 +87,20 @@ NON e'possibile collegarsi, in quanto usato dal chip ethernet.
 
 #endif
 
-
+/**
+ * \mainpage ChillOut RGB FW Lamp
+ *
+ * \section overview Overview
+ * ChillOut RGB Lamp is a complete and open source project to build a full 16.8M Color by yourserf.
+ *
+ * All users are invited to study the source to get understanding how it works 
+ * and how interact in a bus.
+ *
+ * @section cooking_list Cooking List
+ * - Of course, an arduino or a dedicated device (like ChillOut RGB - (it) http://blog.lampugnani.org/project/chillout-rgb-new-pcb/).
+ * - An RGB led (suitable for your driver). if you use a 20mA/channel RGB led, you only need a led and 3 limiter resistor otherwise you will need a led and suitable power controller.
+ * - Arduino IDE.(you may need to add wirig.c in your tree folder)
+ * - Processing IDE (optional). Using a terminal emulator (like HiperTerminal,putty (win) and minicom (linux)) you are able to send and receive command.
+ * - Metro lib. (you may need to edit some line of code)
+ * - VirtualWire lib.
+ */
