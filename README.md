@@ -1,18 +1,19 @@
 ChillOut_RGB ambient lamp project
 =================================
-Chillout RGB is a complete project to build a full 16.8M Color
-by yourserf and control it using a Serial Port with its control 
-software or a IR remote
+Chillout RGB is a complete project to build a full 16.8M Color Lamp by yourserf.
+You will able to control it using a Serial Port and a lot of other ways,
+including RF and I2C.
+
 
 This is the Firmware's repositories
 
 Complete description (it):
 http://blog.lampugnani.org/arduino/chillout-rgb-ambient-lamp/
 
-RF branch
+I2C branch
 =========
-This brach will enable, with right hardware, to receive command through
-RF board.
+This brach will enable, with right connection, to receive
+command through I2C.
 
 Cooking List:
 --------------
@@ -25,7 +26,7 @@ Cooking List:
 	Using a terminal emulator (like HiperTerminal,putty (win) and minicom (linux))
 	you are able to send and receive command.
 * Metro lib. (you may need to edit some line of code)
-* VirtualWire lib.
+* Wire lib.
 
 
 

@@ -6,8 +6,8 @@
  @date 21th October 2011 */
 
 //#define PROTO
-#define BUILD_COMM_I2C
-//#define BUILD_COMM_RF
+//#define BUILD_COMM_I2C
+#define BUILD_COMM_RF
 
 #if defined __AVR_ATmega168__ || defined __AVR_ATmega328P__
 #define CHIP_328

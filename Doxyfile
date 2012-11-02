@@ -31,7 +31,7 @@ PROJECT_NAME           = "ChillOut RGB Lamp FW"
 # This could be handy for archiving the generated documentation or 
 # if some version control system is used.
 
-PROJECT_NUMBER         = RF
+PROJECT_NUMBER         = dev-0.004-I2C
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) 
 # base path where the generated documentation will be put. 

@@ -7,9 +7,10 @@
 #ifndef	TIMING_H
 #define	TIMING_H
 
+//!  Utilizzato nell'init test delled RGB.
 #define DELAY_INIT_TEST_OFF  20
 #define DELAY_INIT_TEST_ON   200
-
+//!  Utilizzato nella comunicazione in RadioFrequenza.
 #define RF_BIT_PER_SEC       2000
 
 /*!  @name  Task timing function definition

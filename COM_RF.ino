@@ -55,9 +55,7 @@ void RFinit(){
   /*! \arg Settaggio var::GND_PIN */
   pinMode(GND_PIN, OUTPUT);		
   /*! \arg Settaggio var::VCC_PIN */
-  pinMode(VCC_PIN, OUTPUT);		
-//  /*! \arg Settaggio var::STATUS_PIN */
-//  pinMode(STATUS_PIN, OUTPUT);		
+  pinMode(VCC_PIN, OUTPUT);				
   //!\n
 
   /*!- Settaggio dello stato dei PIN di alimentazione del ricevitore IR

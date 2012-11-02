@@ -70,6 +70,11 @@ void chkSHUTdn(){
 
 }
 
-
+//! Reset function
+/*!  Reset system function. */
+void resetSYS(){
+        void(* resetFunc) (void) = 0; //declare reset function @ address 0
+      resetFunc();  //call reset
+}
 
 
